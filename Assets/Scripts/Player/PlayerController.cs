@@ -1,36 +1,91 @@
 using System;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : MonoBehaviour, IKitchenElementParent
+
 {
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotateSpeed = 5.0f;
-    [SerializeField] private LayerMask tablesLayerMask;
+    [SerializeField] private LayerMask interactablesLayerMask;
     [SerializeField] GameInput gameInput;
-    [SerializeField] private Transform playerPickPoint;
-   
+    [SerializeField] public Transform playerPickPoint;
+    private KitchenObject kitchenObject;
+
+    public event EventHandler<OnSelectedElementChangeEventArgs> OnSelectedElementChanged;
+    public class OnSelectedElementChangeEventArgs : EventArgs
+    {
+        public InteractableObject SelectedInteractableObject { get; private set; }
+
+        public OnSelectedElementChangeEventArgs(InteractableObject selectedInteractableObject)
+        {
+            SelectedInteractableObject = selectedInteractableObject;
+        }
+    }
+
     private float playerRadius;
     private float playerHeight;
 
     private Vector3 lastInteractableDirection;
+    
+    public InteractableObject selectedInteractableObject;
+
+
     private void Awake()
     {
         playerRadius = GetComponent<CapsuleCollider>().radius;
         playerHeight = GetComponent<CapsuleCollider>().height;
     }
+
     private void Start()
     {
+        // assign the interaction event
         gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
-    void FixedUpdate()
+    private void FixedUpdate()
     {
         HandleMovement();
+        HandleInteractions();
     }
-
-
+    
+    
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
-        Debug.Log("Interacting");
+        if (selectedInteractableObject != null)
+        {
+            selectedInteractableObject.Interact(this);
+        }
+
+    }
+    private void HandleInteractions()
+    {
+        Vector2 inputVector = gameInput.GetMovementVector();
+        Vector3 moveDirection = new(inputVector.x, 0.0f, inputVector.y);
+        float interactDistance = 2f;
+
+        if (moveDirection != Vector3.zero)
+        {
+            lastInteractableDirection = moveDirection;
+        }
+        if (Physics.Raycast(transform.position, lastInteractableDirection, out RaycastHit raycastHit, interactDistance, interactablesLayerMask))
+        {
+            if (raycastHit.transform.TryGetComponent(out InteractableObject interactableObject))
+            {
+                if (interactableObject != selectedInteractableObject)
+                {
+                    SetSelectedElement(interactableObject);
+                }
+            }
+            else
+            {
+                SetSelectedElement(null);
+            }
+        }
+        else
+        {
+            SetSelectedElement(null);
+
+        }
+
     }
 
     private void HandleMovement()
@@ -62,4 +117,34 @@ public class PlayerController : MonoBehaviour
         return canMove;
     }
 
+    public void SetSelectedElement(InteractableObject newSelectedInteractableObject)
+    {
+        if (selectedInteractableObject != newSelectedInteractableObject)
+        {
+            selectedInteractableObject = newSelectedInteractableObject;
+            OnSelectedElementChanged?.Invoke(this, new OnSelectedElementChangeEventArgs(selectedInteractableObject));
+        }
+    }
+    public Transform GetKitchenElementNewTransform()
+    {
+        return playerPickPoint;
+    }
+
+    public KitchenObject GetKitchenObject()
+    {
+        return kitchenObject;
+    }
+    public void SetKitchenObject(KitchenObject kitchenElement)
+    {
+        this.kitchenObject = kitchenElement;
+    }
+
+    public void ClearKitchenObject()
+    {
+        kitchenObject = null;
+    }
+    public bool HasKitchenObject()
+    {
+        return kitchenObject != null;
+    }
 }
