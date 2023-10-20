@@ -16,18 +16,18 @@ public class KitchenObject : MonoBehaviour
         if (this.kitchenElementParent != null)
         {
             this.kitchenElementParent.ClearKitchenObject();
-
-
+            
             this.kitchenElementParent = kitchenElementParent;
 
             kitchenElementParent.SetKitchenObject(this);
+            transform.localPosition = Vector3.zero;
 
             transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
-            transform.localPosition = Vector3.zero;
+            
+            Debug.Log("NEW PARENT SETTED: " + kitchenElementParent.GetKitchenElementNewTransform());
         }
 
     }
-
     public IKitchenElementParent GetKitchenElementParent()
     {
         return kitchenElementParent;
