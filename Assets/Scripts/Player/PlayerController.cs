@@ -39,6 +39,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
     {
         // assign the interaction event
         gameInput.OnInteractAction += GameInput_OnInteractAction;
+        gameInput.OnMixAction += GameInput_OnMixAction;
     }
     private void Update()
     {
@@ -52,6 +53,14 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         if (selectedInteractableObject != null)
         {
             selectedInteractableObject.Interact(this);
+        }
+
+    }
+    private void GameInput_OnMixAction(object sender, EventArgs e)
+    {
+        if (selectedInteractableObject != null)
+        {
+            selectedInteractableObject.MixIngredients(this);
         }
 
     }

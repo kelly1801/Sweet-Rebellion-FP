@@ -23,4 +23,13 @@ public class ClearTable : InteractableObject
         }
     }
 
+    public override void MixIngredients(PlayerController player) {
+        if (HasKitchenObject() && GetKitchenObject().CompareTag("Box")) {
+           //mix ingredients
+           Debug.Log("mMIIIIIIIIIIIIX");
+        } else {
+         // dont mix we need a box firts 
+         Debug.Log("GO GEEEEEEET A BOOOOOOOOOOOOOOOOOOOOX");
+        }
+    }
 }
