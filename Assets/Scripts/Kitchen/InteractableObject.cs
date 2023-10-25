@@ -7,7 +7,7 @@ public class InteractableObject : MonoBehaviour, IKitchenElementParent
     private KitchenObject kitchenObject;
     public virtual void Interact(PlayerController player)
     {
-        Debug.LogError("InteractableObject.Interact()");
+        Debug.LogError("Interact action is not set");
     }
 
 

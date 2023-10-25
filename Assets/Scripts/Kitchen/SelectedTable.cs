@@ -4,16 +4,14 @@ public class SelectedTable : MonoBehaviour
 {
     [SerializeField] private GameObject visualObject;
     [SerializeField] private InteractableObject interactableObject;
-     private PlayerController player;
     private void Start()
-    {
-        player = FindObjectOfType<PlayerController>();
-        player.OnSelectedElementChanged += Player_OnSelectedElementChanged;
+    { 
+        PlayerController.Instance.OnSelectedElementChanged += Player_OnSelectedElementChanged;
     }
 
-    private void Player_OnSelectedElementChanged(object sender, PlayerController.OnSelectedElementChangeEventArgs e)
+    private void Player_OnSelectedElementChanged(object sender, PlayerController.OnSelectedElementChangedEventArgs e)
     {
-        InteractableObject selectedInteractableObject = e.SelectedInteractableObject;
+        InteractableObject selectedInteractableObject = e.selectedInteractableObject;
         if (selectedInteractableObject == interactableObject)
         {
             ShowVisualElements();
