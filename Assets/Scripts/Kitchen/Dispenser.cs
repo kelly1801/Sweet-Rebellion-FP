@@ -1,19 +1,25 @@
+using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class Dispenser : InteractableObject
 {
-    [SerializeField] private KitchenObjectSO kitchenObjectSo;
+    
+   // public event EventHandler OnPlayerGrabbedObject;
+    [SerializeField] private KitchenObjectSO kitchenObjectSO;
     public override void Interact(PlayerController player)
     {
-        if (!player.HasKitchenObject())
-        {
-            Transform ingredientTransform = Instantiate(kitchenObjectSo.prefab);
-            ingredientTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+        Debug.Log(player);
+        Debug.Log(player.GetKitchenElementNewTransform());
+        if (!player.HasKitchenObject()) {
+            // Player is not carrying anything
+            Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
+            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+
+           // OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
-        else
-        {
-            player.GetKitchenObject().SetKitchenObjectParent(player);
-        }
+    
     }
 
 }

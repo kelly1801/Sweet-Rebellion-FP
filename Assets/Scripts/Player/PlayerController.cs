@@ -4,24 +4,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IKitchenElementParent
 
 {
+    public static PlayerController Instance { get; private set; }
+    public event EventHandler<OnSelectedElementChangedEventArgs> OnSelectedElementChanged;
+    public class OnSelectedElementChangedEventArgs : EventArgs {
+        public InteractableObject selectedInteractableObject;
+    }
+    
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotateSpeed = 5.0f;
     [SerializeField] private LayerMask interactablesLayerMask;
     [SerializeField] GameInput gameInput;
     [SerializeField] public Transform playerPickPoint;
     private KitchenObject kitchenObject;
-
-    public event EventHandler<OnSelectedElementChangeEventArgs> OnSelectedElementChanged;
-    public class OnSelectedElementChangeEventArgs : EventArgs
-    {
-        public InteractableObject SelectedInteractableObject { get; private set; }
-
-        public OnSelectedElementChangeEventArgs(InteractableObject selectedInteractableObject)
-        {
-            SelectedInteractableObject = selectedInteractableObject;
-        }
-    }
-
+    
     private float playerRadius;
     private float playerHeight;
 
@@ -32,16 +27,20 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
 
     private void Awake()
     {
+        if (Instance != null) {
+            Debug.LogError("There is more than one Player instance");
+        }
+        Instance = this;
         playerRadius = GetComponent<CapsuleCollider>().radius;
         playerHeight = GetComponent<CapsuleCollider>().height;
     }
-
+    
     private void Start()
     {
         // assign the interaction event
         gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
-    private void FixedUpdate()
+    private void Update()
     {
         HandleMovement();
         HandleInteractions();
@@ -122,7 +121,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         if (selectedInteractableObject != newSelectedInteractableObject)
         {
             selectedInteractableObject = newSelectedInteractableObject;
-            OnSelectedElementChanged?.Invoke(this, new OnSelectedElementChangeEventArgs(selectedInteractableObject));
+            OnSelectedElementChanged?.Invoke(this, new OnSelectedElementChangedEventArgs());
         }
     }
     public Transform GetKitchenElementNewTransform()

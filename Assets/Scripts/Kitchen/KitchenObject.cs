@@ -5,7 +5,6 @@ public class KitchenObject : MonoBehaviour
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
 
     private IKitchenElementParent kitchenElementParent;
-
     public KitchenObjectSO GetKitchenObject()
     {
         return kitchenObjectSO;
@@ -16,16 +15,15 @@ public class KitchenObject : MonoBehaviour
         if (this.kitchenElementParent != null)
         {
             this.kitchenElementParent.ClearKitchenObject();
-            
-            this.kitchenElementParent = kitchenElementParent;
-
-            kitchenElementParent.SetKitchenObject(this);
-            transform.localPosition = Vector3.zero;
-
-            transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
-            
-            Debug.Log("NEW PARENT SETTED: " + kitchenElementParent.GetKitchenElementNewTransform());
         }
+
+        this.kitchenElementParent = kitchenElementParent;
+
+        kitchenElementParent.SetKitchenObject(this);
+        transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
+
+        transform.localPosition = Vector3.zero;
+        
 
     }
     public IKitchenElementParent GetKitchenElementParent()
