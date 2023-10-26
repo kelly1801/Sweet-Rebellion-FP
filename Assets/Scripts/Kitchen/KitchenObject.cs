@@ -26,6 +26,21 @@ public class KitchenObject : MonoBehaviour
         
 
     }
+
+    public bool TryGetBox(out BoxObject box)
+    {
+        if (this is BoxObject)
+        {
+            box = this as BoxObject;
+            return true;
+        }
+        else
+        {
+            box = null;
+            return false;
+        }
+        
+    }
     public IKitchenElementParent GetKitchenElementParent()
     {
         return kitchenElementParent;

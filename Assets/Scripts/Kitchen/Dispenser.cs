@@ -21,5 +21,11 @@ public class Dispenser : InteractableObject
         }
     
     }
+    public override void MixIngredients(PlayerController player)
+    {
+        Debug.Log("nothing");
+
+    }
+    
 
 }

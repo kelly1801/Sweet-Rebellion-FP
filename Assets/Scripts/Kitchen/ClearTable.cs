@@ -14,13 +14,45 @@ public class ClearTable : InteractableObject
             }
         } else {
             // There is a KitchenObject here
-            if (player.HasKitchenObject()) {
-                // Player is carrying something
-            } else {
-                // Player is not carrying anything
-                GetKitchenObject().SetKitchenObjectParent(player);
+            if (player.HasKitchenObject())
+                // player has somethig
+            {
+                if (player.GetKitchenObject().TryGetBox(out BoxObject box))
+                // player has a box
+                {
+                    if (box.TryAddIngredient(GetKitchenObject().GetKitchenObject()))
+                    {
+                        KitchenObject ingredient = GetKitchenObject();
+                        Destroy(ingredient.gameObject);
+                    }
+                }
+                else
+                {
+                    // is holding something different that a box
+                    if (GetKitchenObject().TryGetBox(out box))
+                    {
+                        if (box.TryAddIngredient(player.GetKitchenObject().GetKitchenObject()))
+                        {
+                            KitchenObject ingredientOnPlayer = player.GetKitchenObject();
+                            Destroy(ingredientOnPlayer.gameObject);
+                        }
+                    }
+                }
             }
+            else {
+                // Player is not carrying something
+                GetKitchenObject().SetKitchenObjectParent(player);
+            } 
         }
     }
 
+    public override void MixIngredients(PlayerController player) {
+        if (HasKitchenObject() && GetKitchenObject() is BoxObject) {
+           //mix ingredients
+           Debug.Log("mMIIIIIIIIIIIIX");
+        } else {
+         // dont mix we need a box firts 
+         Debug.Log("GO GEEEEEEET A BOOOOOOOOOOOOOOOOOOOOX");
+        }
+    }
 }
