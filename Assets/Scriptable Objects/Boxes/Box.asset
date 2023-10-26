@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ca3d6a3114626864abf11ca20a4d2aca, type: 3}
   m_Name: Box
   m_EditorClassIdentifier: 
-  prefab: {fileID: 5034702431792420618, guid: 5dd2dc93206e46547a2d77d94c593e7e, type: 3}
+  prefab: {fileID: 3956621087252408539, guid: 213e564e3f05d2f43b0fafea044a7950, type: 3}
   elementIcon: {fileID: 21300000, guid: 18b15cef875fe8749a91be0bf4637a29, type: 3}
-  elementName: Box recipe
+  elementName: Box
