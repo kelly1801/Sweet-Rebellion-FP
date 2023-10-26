@@ -5,6 +5,12 @@ using UnityEngine;
 
 public class BoxObject : KitchenObject
 {
+    public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
+
+    public class OnIngredientAddedEventArgs : EventArgs
+    {
+        public KitchenObjectSO _ingredient;
+    }
     private List<KitchenObjectSO> ingredientsList;
     [SerializeField] private List<KitchenObjectSO> validIngredientsList;
     private void Awake()
@@ -26,7 +32,10 @@ public class BoxObject : KitchenObject
         else
         {
             ingredientsList.Add(ingredient);
-
+OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
+{
+    _ingredient = ingredient
+});
             return true;
         }
         
