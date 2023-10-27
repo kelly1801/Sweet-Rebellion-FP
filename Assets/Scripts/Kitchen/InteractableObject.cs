@@ -10,12 +10,6 @@ public class InteractableObject : MonoBehaviour, IKitchenElementParent
         Debug.LogError("Interact action is not set");
     }
     
-    public virtual void MixIngredients(PlayerController player)
-    {
-        Debug.LogError("Mix action is not set");
-    }
-
-
     public Transform GetKitchenElementNewTransform()
     {
         return tablePickPoint;

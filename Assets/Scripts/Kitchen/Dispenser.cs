@@ -10,8 +10,6 @@ public class Dispenser : InteractableObject
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
     public override void Interact(PlayerController player)
     {
-        Debug.Log(player);
-        Debug.Log(player.GetKitchenElementNewTransform());
         if (!player.HasKitchenObject()) {
             // Player is not carrying anything
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
@@ -21,11 +19,4 @@ public class Dispenser : InteractableObject
         }
     
     }
-    public override void MixIngredients(PlayerController player)
-    {
-        Debug.Log("nothing");
-
-    }
-    
-
 }
