@@ -4,21 +4,42 @@ public class CandyMachine : MonoBehaviour
 {
     [Header("PARAMETERS")]
     [SerializeField] private KitchenObjectSO candyObjectSO = null;
-    [SerializeField][Min(0)] private int quantity = 0;
-    [SerializeField][Min(0)] private float fillInterval = 0;
+    [SerializeField][Tooltip("Object pooling quantity")][Min(0)] private int candiesQuantity = 0;
 
-    public KitchenObjectSO CandyObjectSO
+    [Header("FAKE CANDIES")]
+    [SerializeField] private GameObject fakeCandy = null;
+    [SerializeField][Min(0)] private float fakeCandiesQuantity = 0;
+    [SerializeField][Min(0)] private float fillSeconds = 0;
+
+    private GameObject candy;
+
+    private void Awake()
     {
-        get => candyObjectSO;
+        candy = candyObjectSO.prefab.gameObject;
     }
 
-    public int Quantity
+    public GameObject Candy
     {
-        get => quantity;
+        get => candy;
     }
 
-    public float FillInterval
+    public int CandiesQuantity
     {
-        get => fillInterval;
+        get => candiesQuantity;
+    }
+
+    public GameObject FakeCandy
+    {
+        get => fakeCandy;
+    }
+
+    public float FakeCandiesQuantity
+    {
+        get => fakeCandiesQuantity;
+    }
+
+    public float FillSeconds
+    {
+        get => fillSeconds;
     }
 }

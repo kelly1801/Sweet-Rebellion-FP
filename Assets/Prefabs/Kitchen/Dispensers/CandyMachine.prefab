@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7201719052281080006}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Candies
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -24,8 +24,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 256246063872493006}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.2, z: 0}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -42,7 +42,7 @@ GameObject:
   - component: {fileID: 3104234677547295076}
   - component: {fileID: 6576411469271808674}
   - component: {fileID: 115298247352766294}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: OutputBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -125,7 +125,7 @@ GameObject:
   - component: {fileID: 5085343162340543821}
   - component: {fileID: 300876166959598861}
   - component: {fileID: 1848423947347690945}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -207,7 +207,7 @@ GameObject:
   m_Component:
   - component: {fileID: 9202302964824266006}
   - component: {fileID: 7841780776294405737}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -342,7 +342,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1899668284654098997}
   - component: {fileID: 4658200831082613694}
-  - component: {fileID: 1332977544406057671}
+  - component: {fileID: 8206039316454058547}
   m_Layer: 6
   m_Name: Candy Manager
   m_TagString: Untagged
@@ -388,7 +388,7 @@ CapsuleCollider:
   m_Height: 4
   m_Direction: 1
   m_Center: {x: 0, y: 2, z: 0}
---- !u!114 &1332977544406057671
+--- !u!114 &8206039316454058547
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -397,13 +397,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 2425288251355253696}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 74ad5915ddc09304a8cea567c71727f8, type: 3}
+  m_Script: {fileID: 11500000, guid: 64bb42b14d831b14a91fa0d6698eb810, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   tablePickPoint: {fileID: 0}
   candyMachine: {fileID: 3426726457464349617}
-  candisParent: {fileID: 7201719052281080006}
-  candyDetector: {fileID: 8444449864458505129}
+  candiesParent: {fileID: 7201719052281080006}
+  fakeCandiesParent: {fileID: 6593723903758758477}
   exitPoint: {fileID: 1906969191679056986}
   animator: {fileID: 2703561724537795445}
   leverAnimation: {fileID: 7400000, guid: 877c110740ce7604b86cf16defd54e60, type: 2}
@@ -418,7 +418,7 @@ GameObject:
   - component: {fileID: 6303180332605854500}
   - component: {fileID: 2881970898221209212}
   - component: {fileID: 3483704157229601841}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SuperiorBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -501,7 +501,7 @@ GameObject:
   - component: {fileID: 6076713534738057315}
   - component: {fileID: 5642762676996871764}
   - component: {fileID: 5975002379622833931}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -573,6 +573,37 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &4739133719707168141
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6593723903758758477}
+  m_Layer: 0
+  m_Name: FakeCandies
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6593723903758758477
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4739133719707168141}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5079556331123894435}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4789659042307056988
 GameObject:
   m_ObjectHideFlags: 0
@@ -585,7 +616,7 @@ GameObject:
   - component: {fileID: 5685143516303800134}
   - component: {fileID: 4263078273696681481}
   - component: {fileID: 6838290127664922864}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Crystal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -690,7 +721,7 @@ GameObject:
   - component: {fileID: 1653240432718879946}
   - component: {fileID: 7236958431824683218}
   - component: {fileID: 714506157900840617}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Up
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -773,7 +804,7 @@ GameObject:
   - component: {fileID: 2466105683415150334}
   - component: {fileID: 2723041417823968549}
   - component: {fileID: 3226537447331714329}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: SuperiorBorder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -857,7 +888,7 @@ GameObject:
   - component: {fileID: 2703561724537795445}
   - component: {fileID: 30353938278880188}
   - component: {fileID: 3426726457464349617}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: CandyMachine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -878,7 +909,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1667225883232529994}
-  - {fileID: 2609810225670251732}
+  - {fileID: 6593723903758758477}
   - {fileID: 1906969191679056986}
   - {fileID: 7201719052281080006}
   - {fileID: 1899668284654098997}
@@ -930,9 +961,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494bc265aba1e6a42a2108841c4d9bbd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  candyObjectSO: {fileID: 11400000, guid: 5083d60d41266a54caedd4e673292fcc, type: 2}
-  quantity: 0
-  fillInterval: 0
+  candyObjectSO: {fileID: 11400000, guid: f9281b896dc85cf4cb98f565fff5be5a, type: 2}
+  candiesQuantity: 0
+  fakeCandy: {fileID: 0}
+  fakeCandiesQuantity: 0
+  fillSeconds: 0
 --- !u!1 &5590408367174705980
 GameObject:
   m_ObjectHideFlags: 0
@@ -945,7 +978,7 @@ GameObject:
   - component: {fileID: 5491104930596293237}
   - component: {fileID: 7261492152094686891}
   - component: {fileID: 5124940694451125422}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Hole
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1048,7 +1081,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1667225883232529994}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Parts
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1085,7 +1118,7 @@ GameObject:
   - component: {fileID: 1993340343140287930}
   - component: {fileID: 6391708452075008660}
   - component: {fileID: 5252750055899668835}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Vertical
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1168,7 +1201,7 @@ GameObject:
   - component: {fileID: 7174378382310015548}
   - component: {fileID: 1552692918208524529}
   - component: {fileID: 1799917386925368736}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: InferiorBase
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1251,7 +1284,7 @@ GameObject:
   - component: {fileID: 1153180300049926669}
   - component: {fileID: 9160053909506786409}
   - component: {fileID: 3957899683000835911}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1334,7 +1367,7 @@ GameObject:
   - component: {fileID: 6375555093298757421}
   - component: {fileID: 992058217255215963}
   - component: {fileID: 8012118321356613064}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Center
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1417,7 +1450,7 @@ GameObject:
   - component: {fileID: 8765978990481537796}
   - component: {fileID: 2888504936945027805}
   - component: {fileID: 4755859534815320838}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Horizontal
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1500,7 +1533,7 @@ GameObject:
   - component: {fileID: 6226906953852678432}
   - component: {fileID: 5612565426917946637}
   - component: {fileID: 7182518300826556019}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Top
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1562,7 +1595,7 @@ GameObject:
   - component: {fileID: 6943532389598462581}
   - component: {fileID: 6350731191517573623}
   - component: {fileID: 331190339403604609}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Down
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1643,7 +1676,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5670150651662415669}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: Dispenser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1680,7 +1713,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1906969191679056986}
-  m_Layer: 6
+  m_Layer: 0
   m_Name: ExitPoint
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1702,72 +1735,3 @@ Transform:
   m_Children: []
   m_Father: {fileID: 5079556331123894435}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &9098341115555801765
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2609810225670251732}
-  - component: {fileID: 152316079953657666}
-  - component: {fileID: 8444449864458505129}
-  m_Layer: 6
-  m_Name: Candy Detector
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2609810225670251732
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098341115555801765}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.1, z: 0}
-  m_LocalScale: {x: 2, y: 0.01, z: 2}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 5079556331123894435}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!65 &152316079953657666
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098341115555801765}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &8444449864458505129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9098341115555801765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3a3935d71f87e204aa9390c946ced7fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  spherePosition: {fileID: 2609810225670251732}
-  radius: 0.1
-  color: {r: 0.69411767, g: 0.3647059, b: 0.50980395, a: 1}

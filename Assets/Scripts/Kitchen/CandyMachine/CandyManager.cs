@@ -4,22 +4,25 @@ using UnityEngine;
 
 public class CandyManager : InteractableObject
 {
-    private ObjectPool candyPool;
-
     [Header("POOL")]
     [SerializeField] private CandyMachine candyMachine = null;
-    [SerializeField] private Transform candisParent = null;
+    [SerializeField] private Transform candiesParent = null;
+
+    [Header("VISUALS")]
+    [SerializeField] private Transform fakeCandiesParent = null;
 
     [Header("OUTPUT")]
-    [SerializeField] private ObjectDetector candyDetector = null;
     [SerializeField] private Transform exitPoint = null;
     [SerializeField] private Animator animator = null;
     [SerializeField] private AnimationClip leverAnimation = null;
 
+    private ObjectPool candyPool;
+
     public override void Interact(PlayerController player)
     {
-        Debug.Log("Hola");
-        if (!player.HasKitchenObject())
+        Debug.Log("Candy");
+
+        if (player.PickPoint.childCount == 0)
         {
             StartCoroutine(RollLever(player));
         }
@@ -31,27 +34,35 @@ public class CandyManager : InteractableObject
 
     private void Start()
     {
-        candyPool = new(candyMachine.CandyObjectSO.prefab.gameObject, candisParent, candyMachine.Quantity);
+        candyPool = new(candyMachine.Candy, candiesParent, candyMachine.CandiesQuantity);
 
         candyPool.FillPool();
 
-        StartCoroutine(FillMachine());
+        StartCoroutine(FillMachineVisually());
+
+        GameObject exitCandy = Instantiate(candyMachine.Candy, exitPoint.position, Quaternion.identity);
+        exitCandy.transform.parent = exitPoint;
     }
-
-    private IEnumerator FillMachine()
+    private IEnumerator FillMachineVisually()
     {
-        foreach (GameObject candy in candyPool.Pool)
+        for (int i = 0; i < candyMachine.FakeCandiesQuantity; i++)
         {
-            candy.transform.SetPositionAndRotation(candyPool.Parent.position, Quaternion.identity);
-            candy.transform.parent = candyPool.Parent;
-            candy.SetActive(true);
+            GameObject candyInstance = Instantiate(candyMachine.FakeCandy, fakeCandiesParent.position, Quaternion.identity);
+            candyInstance.transform.parent = fakeCandiesParent;
+            candyInstance.SetActive(true);
+            yield return new WaitForSeconds(candyMachine.FillSeconds);
+            yield return null;
+        }
 
-            float secondsElapsed = 0;
-            while (secondsElapsed < candyMachine.FillInterval)
-            {
-                secondsElapsed += Time.deltaTime;
-                yield return null;
-            }
+        yield return new WaitForSeconds(10f);
+
+        foreach (Transform fakeCandy in fakeCandiesParent)
+        {
+            Rigidbody rigidBody = fakeCandy.gameObject.GetComponent<Rigidbody>();
+            Destroy(rigidBody);
+
+            Collider collider = fakeCandy.gameObject.GetComponent<Collider>();
+            Destroy(collider);
         }
     }
 
@@ -60,18 +71,16 @@ public class CandyManager : InteractableObject
         animator.SetTrigger("roll");
         yield return new WaitForSeconds(leverAnimation.length);
 
-        GameObject candy = candyDetector.GetObject();
+        GameObject candy = candyPool.PullOne();
 
-        if (candy != null)
+        try
         {
-            candy.GetComponent<Collider>().enabled = false;
-            candy.GetComponent<Rigidbody>().useGravity = false;
-            candy.GetComponent<Rigidbody>().Sleep();
             candy.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+            candy.SetActive(true);
         }
-        else
+        catch (Exception)
         {
-            StartCoroutine(FillMachine());
+            Debug.Log("This is not a Kitchen Object");
         }
     }
 }
