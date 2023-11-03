@@ -22,7 +22,7 @@ public class CandyManager : InteractableObject
     {
         Debug.Log("Candy");
 
-        if (player.PickPoint.childCount == 0)
+        if (player.GetComponent<PlayerController>().pickPoint.transform.childCount < 1)
         {
             StartCoroutine(RollLever(player));
         }

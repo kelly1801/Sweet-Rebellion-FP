@@ -5,18 +5,28 @@ using UnityEngine;
 
 public class Dispenser : InteractableObject
 {
-    
-   // public event EventHandler OnPlayerGrabbedObject;
+
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
+    [SerializeField] private Transform pool;
+    [SerializeField] private int quantity;
+
+    private ObjectPool objectPool;
+
+    private void Awake()
+    {
+        objectPool = new(kitchenObjectSO.prefab.gameObject, pool, quantity);
+    }
+
     public override void Interact(PlayerController player)
     {
-        if (!player.HasKitchenObject()) {
-            // Player is not carrying anything
+        Debug.Log("INTERACTING");
+        if (!player.HasKitchenObject())
+        {
             Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
             kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
 
-           // OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
+            // OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
-    
+
     }
 }
