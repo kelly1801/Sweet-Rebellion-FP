@@ -67,13 +67,11 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         }
     }
 
-    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position + new Vector3(0, playerHeight / 2, 0),playerRadius);
     }
-    */
 
     private void HandleInteractions()
     {
