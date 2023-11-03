@@ -1,43 +1,55 @@
 using System;
 using UnityEngine;
+using UnityEditor;
 
+[RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, IKitchenElementParent
 
 {
     public static PlayerController Instance { get; private set; }
     public event EventHandler<OnSelectedElementChangedEventArgs> OnSelectedElementChanged;
-    public class OnSelectedElementChangedEventArgs : EventArgs {
+    public class OnSelectedElementChangedEventArgs : EventArgs
+    {
         public InteractableObject selectedInteractableObject;
     }
-    
+
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotateSpeed = 5.0f;
     [SerializeField] private LayerMask interactablesLayerMask;
     [SerializeField] GameInput gameInput;
-    [SerializeField] public Transform playerPickPoint;
+    [SerializeField] public Transform pickPoint;
+
+    public Transform PickPoint
+    {
+        get => pickPoint;
+    }
+
     private KitchenObject kitchenObject;
-    
+
     private float playerRadius;
     private float playerHeight;
 
-    private Vector3 lastInteractableDirection;
-    
+    //private Vector3 lastInteractableDirection;
+
     public InteractableObject selectedInteractableObject;
 
+    private Animator _animator;
 
     private void Awake()
     {
-        if (Instance != null) {
+        if (Instance != null)
+        {
             Debug.LogError("There is more than one Player instance");
         }
         Instance = this;
         playerRadius = GetComponent<CapsuleCollider>().radius;
         playerHeight = GetComponent<CapsuleCollider>().height;
     }
-    
+
     private void Start()
     {
         // assign the interaction event
+        _animator = gameObject.GetComponent<Animator>();
         gameInput.OnInteractAction += GameInput_OnInteractAction;
     }
     private void Update()
@@ -45,47 +57,50 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         HandleMovement();
         HandleInteractions();
     }
-    
-    
+
+
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
         if (selectedInteractableObject != null)
         {
             selectedInteractableObject.Interact(this);
         }
-
     }
-    
+
+    /*
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.yellow;
+        Gizmos.DrawSphere(transform.position + new Vector3(0, playerHeight / 2, 0),playerRadius);
+    }
+    */
+
     private void HandleInteractions()
     {
         Vector2 inputVector = gameInput.GetMovementVector();
-        Vector3 moveDirection = new(inputVector.x, 0.0f, inputVector.y);
-        float interactDistance = 2f;
+        //Vector3 moveDirection = new Vector3(inputVector.x, 0.0f, inputVector.y).normalized;
 
-        if (moveDirection != Vector3.zero)
+        /*
+        if (inputVector != Vector2.zero)
         {
             lastInteractableDirection = moveDirection;
         }
-        if (Physics.Raycast(transform.position, lastInteractableDirection, out RaycastHit raycastHit, interactDistance, interactablesLayerMask))
+        */
+
+        if (Physics.SphereCast(transform.position + new Vector3(0, playerHeight / 2, 0), 0, transform.forward, out RaycastHit hitInfo, playerRadius, interactablesLayerMask))
         {
-            if (raycastHit.transform.TryGetComponent(out InteractableObject interactableObject))
+            if (hitInfo.transform.TryGetComponent(out InteractableObject interactableObject))
             {
                 if (interactableObject != selectedInteractableObject)
                 {
                     SetSelectedElement(interactableObject);
                 }
             }
-            else
-            {
-                SetSelectedElement(null);
-            }
         }
         else
         {
             SetSelectedElement(null);
-
         }
-
     }
 
     private void HandleMovement()
@@ -95,13 +110,13 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         float moveDistance = moveSpeed * Time.deltaTime;
         bool canMove = CollisionDetection(moveDirection, moveDistance);
 
+        _animator.SetBool("walk", inputVector != Vector2.zero);
+
         if (canMove)
         {
             transform.position += moveDirection * moveDistance;
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
         }
-
-        transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
-
     }
 
     private bool CollisionDetection(Vector3 moveDirection, float moveDistance)
@@ -110,7 +125,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         bool canMove = !Physics.CapsuleCast(
             transform.position,
             transform.position + Vector3.up * playerHeight,
-            playerRadius,
+            playerRadius / 2,
             moveDirection,
             moveDistance
             );
@@ -127,7 +142,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
     }
     public Transform GetKitchenElementNewTransform()
     {
-        return playerPickPoint;
+        return pickPoint;
     }
 
     public KitchenObject GetKitchenObject()
