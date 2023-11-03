@@ -3,17 +3,17 @@ using UnityEngine;
 
 public class ObjectPool
 {
-    private readonly GameObject swimmerModel = null;
+    private readonly GameObject swimmer = null;
     private readonly Transform parent = null;
     private readonly int quantity = 0;
     private readonly List<GameObject> pool;
 
-    public List<GameObject> Pool { get => pool; }
     public Transform Parent { get => parent; }
+    public List<GameObject> Pool { get => pool; }
 
-    public ObjectPool(GameObject swimmerModel, Transform parent, int quantity)
+    public ObjectPool(GameObject swimmer, Transform parent, int quantity)
     {
-        this.swimmerModel = swimmerModel;
+        this.swimmer = swimmer;
         this.parent = parent;
         this.quantity = quantity;
 
@@ -42,11 +42,11 @@ public class ObjectPool
 
     private void PushOne()
     {
-        GameObject swimmer = GameObject.Instantiate(swimmerModel, parent.position, Quaternion.identity); // the object keeps global scale
+        GameObject swimmerInstance = GameObject.Instantiate(swimmer, parent.position, Quaternion.identity); // the object keeps global scale
         //GameObject swimmer = Instantiate(swimmerModel, parent); // the object doesn't keeps global scale
+        swimmerInstance.transform.parent = parent;
+        swimmerInstance.SetActive(false);
 
-        swimmer.SetActive(false);
-
-        pool.Add(swimmer);
+        pool.Add(swimmerInstance);
     }
 }
