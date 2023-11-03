@@ -1,17 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ObjectPool : MonoBehaviour
+public class ObjectPool
 {
-    private List<GameObject> pool;
-
-    [SerializeField] private GameObject swimmerModel;
-    [SerializeField] private Transform parent;
-    [SerializeField] private int quantity;
+    private readonly GameObject swimmerModel = null;
+    private readonly Transform parent = null;
+    private readonly int quantity = 0;
+    private readonly List<GameObject> pool;
 
     public List<GameObject> Pool { get => pool; }
-
     public Transform Parent { get => parent; }
+
+    public ObjectPool(GameObject swimmerModel, Transform parent, int quantity)
+    {
+        this.swimmerModel = swimmerModel;
+        this.parent = parent;
+        this.quantity = quantity;
+
+        pool = new();
+    }
 
     public GameObject PullOne()
     {
@@ -33,19 +40,13 @@ public class ObjectPool : MonoBehaviour
         }
     }
 
-    private void Awake()
-    {
-        pool = new();
-
-        FillPool();
-    }
-
     private void PushOne()
     {
-        GameObject swimmer = Instantiate(swimmerModel, parent);
+        GameObject swimmer = GameObject.Instantiate(swimmerModel, parent.position, Quaternion.identity); // the object keeps global scale
+        //GameObject swimmer = Instantiate(swimmerModel, parent); // the object doesn't keeps global scale
+
         swimmer.SetActive(false);
 
         pool.Add(swimmer);
     }
-
 }

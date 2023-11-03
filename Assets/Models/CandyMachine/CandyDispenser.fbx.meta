@@ -1,14 +1,49 @@
 fileFormatVersion: 2
-guid: 4d2b1812ba9de1d4b9cde6b3f19674cb
+guid: 1f91f9c5b3bb27947931c1cbbf5887e5
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: CherryBlossomPink
+    second: {fileID: 2100000, guid: 6225ade857d95e84ab318703b7dcac67, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Glass
+    second: {fileID: 2100000, guid: a4e771424cf0b4d41a1ec0ad023c9a3b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: MagentaPantone
+    second: {fileID: 2100000, guid: 0143fd8442cad7141a7287db6ad2eeeb, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: NonPhotoBlue
+    second: {fileID: 2100000, guid: 1a99867919e3e1748a7413718176bc05, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Peach
+    second: {fileID: 2100000, guid: 873b3961efba044499929a5fa0ba6c24, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Saffron
+    second: {fileID: 2100000, guid: 535ae374d53e9c24aa9900d965c31f8d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Seashell
+    second: {fileID: 2100000, guid: 9a5223f7ac0b59e4cbd602205bda2e5d, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
     materialSearch: 1
-    materialLocation: 0
+    materialLocation: 1
   animations:
     legacyGenerateAnimations: 4
     bakeSimulation: 0
