@@ -20,11 +20,13 @@ public class KitchenObject : MonoBehaviour
         this.kitchenElementParent = kitchenElementParent;
 
         kitchenElementParent.SetKitchenObject(this);
-        transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
-
-        transform.localPosition = Vector3.zero;
         
-
+        // Set position and parent
+        // Set rotation to zero
+        
+        transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
+        transform.localPosition = Vector3.zero;
+        transform.localRotation = Quaternion.identity;
     }
 
     public bool TryGetBox(out BoxObject box)
