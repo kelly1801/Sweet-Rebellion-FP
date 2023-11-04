@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 
 public class KitchenObject : MonoBehaviour
 {
     [SerializeField] private KitchenObjectSO kitchenObjectSO;
-
     private IKitchenElementParent kitchenElementParent;
+
+ 
+
     public KitchenObjectSO GetKitchenObject()
     {
         return kitchenObjectSO;
@@ -22,11 +25,10 @@ public class KitchenObject : MonoBehaviour
         kitchenElementParent.SetKitchenObject(this);
         
         // Set position and parent
-        // Set rotation to zero
         
         transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
-        transform.localRotation = Quaternion.Euler(0,0,0);
         transform.localPosition = Vector3.zero;
+   
     }
 
     public bool TryGetBox(out BoxObject box)
