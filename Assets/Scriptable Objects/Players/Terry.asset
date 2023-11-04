@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac152c1413b134cb86087511f2e736, type: 3}
   m_Name: Terry
   m_EditorClassIdentifier: 
-  character: {fileID: 0}
-  sprite: {fileID: 0}
+  prefab: {fileID: 4189245835474690939, guid: 06dbeab20c9014b45a2287668b262c76, type: 3}
+  sprite: {fileID: 21300000, guid: cd19d705511673f4887028da3154ee84, type: 3}
   name: Terry

@@ -13,7 +13,7 @@ public class PlayerSelector : MonoBehaviour
 
     private static readonly string PLAYER = "PLAYER";
 
-    private int Selection
+    public static int Selection
     {
         get => PlayerPrefs.GetInt(PLAYER, 0);
         set => PlayerPrefs.SetInt(PLAYER, value);
