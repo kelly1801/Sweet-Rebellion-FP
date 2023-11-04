@@ -41,5 +41,9 @@ public class BoxObject : KitchenObject
         }
         
     }
+    
+    public List<KitchenObjectSO> GetKitchenObjectSOList() {
+        return ingredientsList;
+    }
 
 }

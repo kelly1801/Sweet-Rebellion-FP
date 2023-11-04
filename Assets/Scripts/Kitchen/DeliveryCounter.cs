@@ -8,10 +8,11 @@ public class DeliveryCounter :  InteractableObject
    {
       if (player.HasKitchenObject())
       {
-         Debug.Log("DELIVERYINGG");
          if (player.GetKitchenObject().TryGetBox(out BoxObject box))
          {
+            DeliveryManager.Instance.DeliverRecipe(box);
             player.GetKitchenObject().gameObject.SetActive(false);
+            player.ClearKitchenObject();
          }
       }
    }
