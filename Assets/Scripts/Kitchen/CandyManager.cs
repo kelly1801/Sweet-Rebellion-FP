@@ -22,7 +22,8 @@ public class CandyManager : InteractableObject
     {
         Debug.Log("Candy");
 
-        if (player.GetComponent<PlayerController>().pickPoint.transform.childCount < 1)
+        //if (player.GetComponent<PlayerController>().pickPoint.transform.childCount < 1)
+        if (!player.HasKitchenObject())
         {
             StartCoroutine(RollLever(player));
         }
@@ -43,6 +44,7 @@ public class CandyManager : InteractableObject
         GameObject exitCandy = Instantiate(candyMachine.Candy, exitPoint.position, Quaternion.identity);
         exitCandy.transform.parent = exitPoint;
     }
+
     private IEnumerator FillMachineVisually()
     {
         for (int i = 0; i < candyMachine.FakeCandiesQuantity; i++)

@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Cinematic.unity
     guid: 256a42728af19ea4d95d20d8986fff7a
   - enabled: 1
-    path: Assets/Scenes/Game.unity
+    path: Assets/Scenes/SinglePlayer.unity
     guid: 12e0243d234e65342ba7b66aa67567c2
   - enabled: 1
     path: Assets/Scenes/Multiplayer.unity

@@ -3,12 +3,16 @@ using UnityEngine.SceneManagement;
 
 public class SceneLoader : MonoBehaviour
 {
-    #region publicstaticmethods
-    public static void LoadGameScene()
-    {
-        SceneManager.LoadScene("Game");
-    }
+    [SerializeField] private string sceneName;
 
+    #region publismethods
+    public void LoadScene()
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+    #endregion
+
+    #region publicstaticmethods
     public static void LoadNextScene()
     {
         ScenesManager.Scene++;
