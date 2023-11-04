@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DeliveryManagerSingleUI : MonoBehaviour
+public class RecipeUI : MonoBehaviour
 {
     [SerializeField] private Transform[] iconSpots;
 

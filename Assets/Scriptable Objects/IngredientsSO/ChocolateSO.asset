@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: ChocolateSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 5428296073594752404, guid: d2ffa8649b928f54190b877d26e7d1a8, type: 3}
-  elementIcon: {fileID: 0}
+  elementIcon: {fileID: 21300000, guid: 92ab6506fdec56448a6e2882223ac5e7, type: 3}
   elementName: Chocolate
