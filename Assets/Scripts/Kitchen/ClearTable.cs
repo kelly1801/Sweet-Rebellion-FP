@@ -24,7 +24,7 @@ public class ClearTable : InteractableObject
                     if (box.TryAddIngredient(GetKitchenObject().GetKitchenObject()))
                     {
                         KitchenObject ingredient = GetKitchenObject();
-                        Destroy(ingredient.gameObject);
+                        ingredient.gameObject.SetActive(false);
                     }
                 }
                 else
@@ -35,7 +35,8 @@ public class ClearTable : InteractableObject
                         if (box.TryAddIngredient(player.GetKitchenObject().GetKitchenObject()))
                         {
                             KitchenObject ingredientOnPlayer = player.GetKitchenObject();
-                            Destroy(ingredientOnPlayer.gameObject);
+                            ingredientOnPlayer.gameObject.SetActive(false);
+                            player.ClearKitchenObject();
                         }
                     }
                 }

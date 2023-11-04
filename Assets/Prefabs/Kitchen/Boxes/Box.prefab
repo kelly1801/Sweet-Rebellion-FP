@@ -352,11 +352,11 @@ MonoBehaviour:
   box: {fileID: 8321114672869881630}
   ingredientsObjectsList:
   - ingredientSO: {fileID: 11400000, guid: 5083d60d41266a54caedd4e673292fcc, type: 2}
-    gameObject: {fileID: 7374232836776089458}
+    ingredientLine: {fileID: 7374232836776089458}
   - ingredientSO: {fileID: 11400000, guid: 6e824932b9e2dfd4c9ea6d8994e1c044, type: 2}
-    gameObject: {fileID: 8370328876651420828}
+    ingredientLine: {fileID: 8370328876651420828}
   - ingredientSO: {fileID: 11400000, guid: 6d916b04251f3614a95704e07e2c50f3, type: 2}
-    gameObject: {fileID: 8756831709042823316}
+    ingredientLine: {fileID: 8756831709042823316}
 --- !u!4 &8792573389527649201 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8630616260160764118, guid: 5dd2dc93206e46547a2d77d94c593e7e,

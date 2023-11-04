@@ -25,8 +25,8 @@ public class KitchenObject : MonoBehaviour
         // Set rotation to zero
         
         transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
+        transform.localRotation = Quaternion.Euler(0,0,0);
         transform.localPosition = Vector3.zero;
-        transform.localRotation = Quaternion.identity;
     }
 
     public bool TryGetBox(out BoxObject box)

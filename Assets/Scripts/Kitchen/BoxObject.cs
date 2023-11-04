@@ -32,10 +32,11 @@ public class BoxObject : KitchenObject
         else
         {
             ingredientsList.Add(ingredient);
-OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
-{
-    _ingredient = ingredient
-});
+            OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs 
+            
+            {
+              _ingredient = ingredient
+            });
             return true;
         }
         
