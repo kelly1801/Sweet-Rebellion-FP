@@ -1,6 +1,4 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Dispenser : InteractableObject
@@ -10,23 +8,38 @@ public class Dispenser : InteractableObject
     [SerializeField] private Transform pool;
     [SerializeField] private int quantity;
 
-    private ObjectPool objectPool;
+    private ObjectPool dispensedPool;
 
     private void Awake()
     {
-        objectPool = new(kitchenObjectSO.prefab.gameObject, pool, quantity);
+        dispensedPool = new(kitchenObjectSO.prefab.gameObject, pool, quantity);
+
+        dispensedPool.FillPool();
     }
 
     public override void Interact(PlayerController player)
     {
-        Debug.Log("INTERACTING");
+        Debug.Log("Dispenser");
+
         if (!player.HasKitchenObject())
         {
-            Transform kitchenObjectTransform = Instantiate(kitchenObjectSO.prefab);
-            kitchenObjectTransform.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
-
+            Dispense(player);
             // OnPlayerGrabbedObject?.Invoke(this, EventArgs.Empty);
         }
+    }
 
+    private void Dispense(PlayerController player)
+    {
+        GameObject dispensed = dispensedPool.PullOne();
+
+        try
+        {
+            dispensed.GetComponent<KitchenObject>().SetKitchenObjectParent(player);
+            dispensed.SetActive(true);
+        }
+        catch (Exception)
+        {
+            Debug.Log("This is not a Kitchen Object");
+        }
     }
 }

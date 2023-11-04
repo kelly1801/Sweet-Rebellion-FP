@@ -13,11 +13,14 @@ public class TrashCan : InteractableObject
 
     public override void Interact(PlayerController player)
     {
+        Debug.Log("Trash");
+
         if (player.HasKitchenObject())
         {
             GameObject kitchenGameObject = player.GetKitchenObject().gameObject;
             kitchenGameObject.transform.parent = _transform;
             kitchenGameObject.gameObject.SetActive(false);
+            player.SetKitchenObject(null);
         }
     }
 }

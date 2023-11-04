@@ -1,6 +1,5 @@
 using System;
 using UnityEngine;
-using UnityEditor;
 
 [RequireComponent(typeof(Animator))]
 public class PlayerController : MonoBehaviour, IKitchenElementParent
@@ -24,7 +23,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         get => pickPoint;
     }
 
-    private KitchenObject kitchenObject;
+    [SerializeField] private KitchenObject kitchenObject;
 
     private float playerRadius;
     private float playerHeight;
@@ -58,7 +57,6 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         HandleInteractions();
     }
 
-
     private void GameInput_OnInteractAction(object sender, EventArgs e)
     {
         if (selectedInteractableObject != null)
@@ -67,11 +65,13 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         }
     }
 
+    /*
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.yellow;
         Gizmos.DrawSphere(transform.position + new Vector3(0, playerHeight / 2, 0),playerRadius);
     }
+    */
 
     private void HandleInteractions()
     {
@@ -108,12 +108,19 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         float moveDistance = moveSpeed * Time.deltaTime;
         bool canMove = CollisionDetection(moveDirection, moveDistance);
 
-        _animator.SetBool("walk", inputVector != Vector2.zero);
+        if (inputVector != Vector2.zero)
+        {
+            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
+            _animator.SetBool("walk", true);
+        }
+        else
+        {
+            _animator.SetBool("walk", false);
+        }
 
         if (canMove)
         {
             transform.position += moveDirection * moveDistance;
-            transform.forward = Vector3.Slerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
         }
     }
 
