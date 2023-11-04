@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: Ingredient
   m_EditorClassIdentifier: 
   prefab: {fileID: 2855609943972063425, guid: 1fd3693603b7d504b9f151f699de7b1d, type: 3}
-  elementIcon: {fileID: 0}
+  elementIcon: {fileID: 21300000, guid: a75328d3fde295849b16746827f60b47, type: 3}
   elementName: Ingredient

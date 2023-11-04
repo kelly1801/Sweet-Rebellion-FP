@@ -11,7 +11,7 @@ public class FinalRecipe : MonoBehaviour
     public struct ingredient_GameObject
     {
         public KitchenObjectSO ingredientSO;
-        public GameObject gameObject;
+        public GameObject ingredientLine;
         
     }
     [SerializeField] private BoxObject box;
@@ -27,7 +27,7 @@ public class FinalRecipe : MonoBehaviour
         {
             if (ingredient.ingredientSO == e._ingredient)
             {
-                ingredient.gameObject.SetActive(true);
+                ingredient.ingredientLine.SetActive(true);
             }
         } 
     }

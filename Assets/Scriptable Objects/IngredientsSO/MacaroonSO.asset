@@ -13,5 +13,5 @@ MonoBehaviour:
   m_Name: MacaroonSO
   m_EditorClassIdentifier: 
   prefab: {fileID: 5428296073594752404, guid: 316f386a290af28469aac2564a36537b, type: 3}
-  elementIcon: {fileID: 0}
+  elementIcon: {fileID: 21300000, guid: 0ed522c8017b1954c94880c9f0c426ad, type: 3}
   elementName: Macaroon

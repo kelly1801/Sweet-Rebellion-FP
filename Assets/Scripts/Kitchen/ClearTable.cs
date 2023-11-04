@@ -4,7 +4,6 @@ public class ClearTable : InteractableObject
 {
  
     public override void Interact(PlayerController player) {
-        Debug.Log("Table");
 
         if (!HasKitchenObject()) {
             // There is no KitchenObject here
@@ -25,7 +24,7 @@ public class ClearTable : InteractableObject
                     if (box.TryAddIngredient(GetKitchenObject().GetKitchenObject()))
                     {
                         KitchenObject ingredient = GetKitchenObject();
-                        Destroy(ingredient.gameObject);
+                        ingredient.gameObject.SetActive(false);
                     }
                 }
                 else
@@ -36,7 +35,8 @@ public class ClearTable : InteractableObject
                         if (box.TryAddIngredient(player.GetKitchenObject().GetKitchenObject()))
                         {
                             KitchenObject ingredientOnPlayer = player.GetKitchenObject();
-                            Destroy(ingredientOnPlayer.gameObject);
+                            ingredientOnPlayer.gameObject.SetActive(false);
+                            player.ClearKitchenObject();
                         }
                     }
                 }
