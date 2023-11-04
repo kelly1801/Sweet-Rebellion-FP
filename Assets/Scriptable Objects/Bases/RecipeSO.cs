@@ -6,4 +6,6 @@ public class RecipeSO : ScriptableObject
 {
    public List<KitchenObjectSO> ingredientsList;
    public string recipeName;
+   public int recipeValue;
+   
 }

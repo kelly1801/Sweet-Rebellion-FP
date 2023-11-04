@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f9281b896dc85cf4cb98f565fff5be5a, type: 2}
   - {fileID: 11400000, guid: 6d916b04251f3614a95704e07e2c50f3, type: 2}
   recipeName: Maracuya
+  recipeValue: 20

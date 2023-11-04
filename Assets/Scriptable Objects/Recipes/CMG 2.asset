@@ -17,3 +17,4 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6e824932b9e2dfd4c9ea6d8994e1c044, type: 2}
   - {fileID: 11400000, guid: 6d916b04251f3614a95704e07e2c50f3, type: 2}
   recipeName: Gummy-Gummy
+  recipeValue: 50

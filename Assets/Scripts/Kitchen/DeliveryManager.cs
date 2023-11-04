@@ -1,12 +1,22 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+public class RecipeCompletedEventArgs : EventArgs
+{
+  public int RecipeValue { get; private set; }
 
+  public RecipeCompletedEventArgs(int recipeValue)
+  {
+    RecipeValue = recipeValue;
+  }
+}
 public class DeliveryManager : MonoBehaviour
 {
 
+  
   public event EventHandler OnRecipeSpawned;
-  public event EventHandler OnRecipeCompleted;
+  public event EventHandler<RecipeCompletedEventArgs> OnRecipeCompleted;
+
   public static DeliveryManager Instance { get; private set; }
   
   [SerializeField] private RecipesListSO _recipesListSO;
@@ -38,9 +48,8 @@ public class DeliveryManager : MonoBehaviour
       }
       
     }
-    {
-      
-    }
+    
+    
   }
 
   public void DeliverRecipe(BoxObject box)
@@ -77,7 +86,7 @@ public class DeliveryManager : MonoBehaviour
         if (plateContentMatchRecipe)
         {
           waitingRecipeList.RemoveAt(i);
-          OnRecipeCompleted?.Invoke(this, EventArgs.Empty);
+          OnRecipeCompleted?.Invoke(this, new RecipeCompletedEventArgs(waitingRecipe.recipeValue));
           return;
         }
       }
