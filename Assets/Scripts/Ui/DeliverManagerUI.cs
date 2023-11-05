@@ -10,7 +10,6 @@ public class DeliverManagerUI : MonoBehaviour
     [SerializeField] private Transform recipeTemplate;
     [SerializeField] private Slider moneySlider;
     [SerializeField] private TextMeshProUGUI moneyText;
-    [SerializeField] private GameManager _gameManager;
 
     private void Awake()
     {
@@ -38,7 +37,7 @@ public class DeliverManagerUI : MonoBehaviour
         moneyText.text = "$ " + moneySlider.value.ToString();
     
         // Update the GameManager's payedDebt value
-        _gameManager.payedDebt = moneySlider.value;
+        GameManager.Instance.payedDebt = moneySlider.value;
     }
 
 
@@ -53,13 +52,11 @@ public class DeliverManagerUI : MonoBehaviour
         }
 
         foreach (RecipeSO recipe in DeliveryManager.Instance.GetWaitingRecipes())
-            {
+        {
                 Transform recipeTransform = Instantiate(recipeTemplate, container);
                 recipeTransform.gameObject.SetActive(true);
                 recipeTransform.GetComponent<RecipeUI>().SetRecipeIngredients(recipe);
-                Debug.Log(recipe.recipeName + recipe.recipeValue.ToString());
-                
-            }
+        }
     }
 
 }
