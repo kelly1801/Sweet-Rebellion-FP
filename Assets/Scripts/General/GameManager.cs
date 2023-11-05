@@ -73,8 +73,9 @@ public class GameManager : MonoBehaviour
         }
         
         // Calculate remaining time in minutes and seconds
-        int minutes = Mathf.FloorToInt(timerDurationInMinutes - Time.timeSinceLevelLoad / 60f);
-        int seconds = Mathf.FloorToInt(timerDurationInMinutes * 60 - Time.timeSinceLevelLoad) % 60;
+        float timeRemaining = Mathf.Max(timerDurationInMinutes * 60 - Time.timeSinceLevelLoad, 0);
+        int minutes = Mathf.FloorToInt(timeRemaining / 60f);
+        int seconds = Mathf.FloorToInt(timeRemaining) % 60;
 
         // Update the TextMeshPro text
         durationText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
