@@ -9,17 +9,23 @@ public class GameManager : MonoBehaviour
     private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
-
     public event EventHandler VictoryEvent;
     public event EventHandler GameOverEvent;
 
     [SerializeField, Min(0)] private float timerDurationInMinutes = 5f;
     [SerializeField] private int debtGoal;
+
+    [SerializeField] private float delay;
+    [SerializeField] private GameObject ReadyPanel;
+
+    private PlayerController playerController;
+
     public int DebtGoal
     {
         get => debtGoal;
     }
 
+    [SerializeField] private GameObject scorePanel;
     [SerializeField] private ImageFiller timerImage;
 
     public float payedDebt;
@@ -59,8 +65,30 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        timerImage.FillAmount = 1f;
+        StartCoroutine(WaitReadyPanel());
+    }
 
+    private IEnumerator WaitReadyPanel()
+    {
+        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+
+        playerController.enabled = false;
+
+        float musicVolume = MusicAudio.Volume;
+        float soundVolume = SoundAudio.Volume;
+
+        MusicAudio.Volume /= 1.5f;
+        SoundAudio.Volume /= 1.5f;
+
+        yield return new WaitForSeconds(delay);
+
+        MusicAudio.Volume = musicVolume;
+        SoundAudio.Volume = soundVolume;
+
+        PlayerController.Instance.enabled = true;
+        Destroy(ReadyPanel);
+
+        timerImage.FillAmount = 1f;
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (IsValidScene(currentSceneName))
         {
@@ -135,12 +163,17 @@ public class GameManager : MonoBehaviour
 
     private void OnVictory()
     {
+        gameOver = false;
+        scorePanel.SetActive(true);
         VictoryEvent?.Invoke(this, EventArgs.Empty);
     }
 
     public void OnGameOver()
     {
+        gameOver = true;
+        scorePanel.SetActive(true);
         Debug.Log("YOU LOOOOOOOOOOST");
         GameOverEvent?.Invoke(this, EventArgs.Empty);
+
     }
 }

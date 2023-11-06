@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d75030dc251fadb409fc86a54d93a10b
+guid: 3d577615235b59b41b8ff209fcd3fb19
 TrueTypeFontImporter:
   externalObjects: {}
   serializedVersion: 4
@@ -10,9 +10,7 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Tilt Neon
-  fallbackFontReferences:
-  - {fileID: 12800000, guid: 3d577615235b59b41b8ff209fcd3fb19, type: 3}
-  - {fileID: 12800000, guid: 2a6f3d83c46cfd34db0f2fba83669e49, type: 3}
+  fallbackFontReferences: []
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

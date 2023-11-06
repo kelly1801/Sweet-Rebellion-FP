@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4975810796773159956}
   m_Layer: 0
   m_Name: Pato
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -369,8 +369,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   audio: {fileID: 2787145057709779149}
-  clips:
-  - {fileID: 8300000, guid: f0463472844fda14c9e6f358574834fd, type: 3}
 --- !u!1001 &2245417485106491627
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -798,7 +796,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fe49537e0d099294abb4f8beeb7bc9fb, type: 2}
+      objectReference: {fileID: 2100000, guid: 8de302ebbe9638647a43c743294db4da, type: 2}
     - target: {fileID: 3291163720618517394, guid: 50eb3f06604c68c4999b91dc75b05284,
         type: 3}
       propertyPath: m_LocalScale.x
