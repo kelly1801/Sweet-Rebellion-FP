@@ -37,7 +37,7 @@ public abstract class Audio : MonoBehaviour
     #endregion
 
     #region protectedmethods
-    protected void Start()
+    protected void Awake()
     {
         audioSource = gameObject.GetComponent<AudioSource>();
 

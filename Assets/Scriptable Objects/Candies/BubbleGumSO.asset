@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ca3d6a3114626864abf11ca20a4d2aca, type: 3}
+  m_Name: BubbleGumSO
+  m_EditorClassIdentifier: 
+  prefab: {fileID: 315831732629124176, guid: 1136dc8934bd8014988aeb435cfb9602, type: 3}
+  elementIcon: {fileID: 21300000, guid: fc899a0028ae40846a7eced5503cbbc6, type: 3}
+  elementName: BubbleGum

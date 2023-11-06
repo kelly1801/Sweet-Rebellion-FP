@@ -8,20 +8,14 @@ public class RecipeUI : MonoBehaviour
 {
     [SerializeField] private Transform[] iconSpots;
 
-   
     public void SetRecipeIngredients(RecipeSO recipe)
     {
         List<Transform> availableIconSpot = new List<Transform>(iconSpots);
 
-        foreach (KitchenObjectSO ingredient in recipe.ingredientsList)
+        for (int i = 0; i < recipe.ingredientsList.Count; i++)
         {
-            int randIndex = UnityEngine.Random.Range(0, availableIconSpot.Count);
-   
-            Transform chosenIconSpot = availableIconSpot[randIndex];
-            chosenIconSpot.GetComponent<Image>().sprite = ingredient.elementIcon;
-            availableIconSpot.RemoveAt(randIndex);
+            KitchenObjectSO ingredient = recipe.ingredientsList[i];
+            availableIconSpot[i].GetComponent<Image>().sprite = ingredient.elementIcon;
         }
-
-      
     }
 }
