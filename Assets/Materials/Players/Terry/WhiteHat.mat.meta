@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/Materials/Players/Terry/WhiteHat.mat.meta
 guid: 2023b3e7a329ff741a1ce3a9e1302110
+=======
+guid: b29065f3144d14a47a4588ed8a2a8ce2
+>>>>>>> 65528b7b02048f67ed1c2114ee6b81132525cf0b:Assets/Models/Characters/WhiteHat.mat.meta
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
