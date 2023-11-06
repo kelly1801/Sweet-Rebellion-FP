@@ -62,8 +62,12 @@ public class FinalRecipe : MonoBehaviour
 
             return chosenSpawnPoint;
         }
-      
-      
+        else
+        {
+            // case when there are no available spawn points 
+            Debug.LogError("No available spawn points!");
+            return null; 
+        }
     }
 }
 
