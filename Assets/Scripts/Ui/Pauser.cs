@@ -51,7 +51,10 @@ public class Pauser : MonoBehaviour
 
     private IEnumerator PlayAsynchronically()
     {
-        Audio.Play(audio, clip, 1.5f);
+        if (audio != null)
+        {
+            Audio.Play(audio, clip, 1.5f);
+        }
         yield return new WaitForSeconds(1);
         Pause();
     }

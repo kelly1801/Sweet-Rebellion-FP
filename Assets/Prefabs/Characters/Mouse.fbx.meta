@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: d63a9766d2138d1418ca701e3b85259b
+guid: 9a3a79af38503824296afb71dce346f0
 ModelImporter:
   serializedVersion: 22200
   internalIDToNameTable: []
@@ -7,13 +7,18 @@ ModelImporter:
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.012
-    second: {fileID: 2100000, guid: b2d8d59412554044eb95c747b6861902, type: 2}
+      name: Material
+    second: {fileID: 2100000, guid: 8be3d4b5f8e3b4247a136e600d7578b5, type: 2}
   - first:
       type: UnityEngine:Material
       assembly: UnityEngine.CoreModule
-      name: Material.017
-    second: {fileID: 2100000, guid: 36ff9fd95c7390644a297148180ffed2, type: 2}
+      name: Material.001
+    second: {fileID: 2100000, guid: 75f0ca6d19597704994b37f4a63ebeb6, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Material.005
+    second: {fileID: 2100000, guid: afc80c4558ff7014fac98e1661fb192e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
@@ -51,10 +56,10 @@ ModelImporter:
     useSRGBMaterialColor: 1
     sortHierarchyByName: 1
     importPhysicalCameras: 1
-    importVisibility: 1
-    importBlendShapes: 1
-    importCameras: 1
-    importLights: 1
+    importVisibility: 0
+    importBlendShapes: 0
+    importCameras: 0
+    importLights: 0
     nodeNameCollisionStrategy: 1
     fileIdsGeneration: 2
     swapUVChannels: 0
@@ -88,7 +93,7 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
@@ -103,11 +108,11 @@ ModelImporter:
     globalScale: 1
     rootMotionBoneName: 
     hasTranslationDoF: 0
-    hasExtraRoot: 0
+    hasExtraRoot: 1
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 0
   humanoidOversampling: 1
   avatarSetup: 0
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1

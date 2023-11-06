@@ -9,4 +9,8 @@ public class ObjectActivator : MonoBehaviour
         objectToActivate.SetActive(true);
     }
 
+    public void Deactivate()
+    {
+        objectToActivate.SetActive(false);
+    }
 }

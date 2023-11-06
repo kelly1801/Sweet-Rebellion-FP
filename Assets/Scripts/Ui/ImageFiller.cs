@@ -12,7 +12,7 @@ public class ImageFiller : MonoBehaviour
         set => image.fillAmount = value;
     }
 
-    private void Start()
+    protected void Start()
     {
         image = gameObject.GetComponent<Image>();
     }
