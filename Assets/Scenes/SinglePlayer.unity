@@ -34974,7 +34974,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1827431236
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37729,8 +37729,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f9c83f2a56e3f14a8e7a4e50276db3f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timerDurationInMinutes: 1
-  debtGoal: 10
+  timerDurationInMinutes: 10
+  debtGoal: 1000
   delay: 5
   ReadyPanel: {fileID: 0}
   scorePanel: {fileID: 1827431235}
@@ -38508,7 +38508,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &2085214085
 RectTransform:
   m_ObjectHideFlags: 0
