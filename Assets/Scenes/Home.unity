@@ -382,7 +382,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1b24cfdd8762d4f8dfb937bf631cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialValue: 1.5
+  initialValue: 1.25
   reloadValue: 1.25
   speed: 0.0025
 --- !u!1 &60177735
