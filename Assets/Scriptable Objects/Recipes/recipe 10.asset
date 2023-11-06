@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea8cfab1d5d40c44a2482c6ebde2720, type: 3}
-  m_Name: CMG1
+  m_Name: recipe 10
   m_EditorClassIdentifier: 
   ingredientsList:
   - {fileID: 11400000, guid: 5083d60d41266a54caedd4e673292fcc, type: 2}
-  - {fileID: 11400000, guid: 6e824932b9e2dfd4c9ea6d8994e1c044, type: 2}
-  - {fileID: 11400000, guid: 6d916b04251f3614a95704e07e2c50f3, type: 2}
-  recipeName: Macaroon-Gummy
-  recipeValue: 200
+  - {fileID: 11400000, guid: 1b5bb2cd692a9f64da55a4eb55ca1a6b, type: 2}
+  - {fileID: 11400000, guid: 0ba2b1357113ea844ba167429fc83c8a, type: 2}
+  recipeName: recipe10
+  recipeValue: 90

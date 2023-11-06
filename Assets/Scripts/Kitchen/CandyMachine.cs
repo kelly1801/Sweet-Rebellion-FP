@@ -17,6 +17,7 @@ public class CandyMachine : MonoBehaviour
         candy = candyObjectSO.prefab.gameObject;
         sprite = candyObjectSO.elementIcon;
     }
+    
 
     public GameObject Candy
     {

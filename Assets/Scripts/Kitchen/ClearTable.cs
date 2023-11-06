@@ -7,8 +7,7 @@ public class ClearTable : InteractableObject
     [SerializeField] private RandomAudioPlayer randomAudioPlayer;
 
     public override void Interact(PlayerController player) {
-
-        Debug.Log("Table");
+        
 
         if (!HasKitchenObject()) {
             // There is no KitchenObject here
@@ -16,9 +15,7 @@ public class ClearTable : InteractableObject
                 // Player is carrying something
                 player.GetKitchenObject().SetKitchenObjectParent(this);
                 randomAudioPlayer.PlayRandomSound();
-            } else {
-                // Player not carrying anything
-            }
+            } 
         } else {
             // There is a KitchenObject here
             if (player.HasKitchenObject())
@@ -27,6 +24,7 @@ public class ClearTable : InteractableObject
                 if (player.GetKitchenObject().TryGetBox(out BoxObject box))
                 // player has a box
                 {
+                    
                     if (box.TryAddIngredient(GetKitchenObject().GetKitchenObject()))
                     {
                         KitchenObject ingredient = GetKitchenObject();

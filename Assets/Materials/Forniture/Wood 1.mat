@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Wood
+  m_Name: Wood 1
   m_Shader: {fileID: 4800000, guid: 933532a4fcc9baf4fa0491de14d08ed7, type: 3}
   m_Parent: {fileID: 2100000, guid: b7b9d17456f774b4d92d05b56db0d367, type: 2}
   m_ModifiedSerializedProperties: 8
@@ -49,6 +49,6 @@ Material:
     m_Floats:
     - _Cull: 0
     m_Colors:
-    - _BaseColor: {r: 1, g: 0.92151254, b: 0.8349056, a: 1}
-    - _Color: {r: 1, g: 0.92151254, b: 0.8349056, a: 1}
+    - _BaseColor: {r: 0.9528302, g: 0.66889304, b: 0.35656217, a: 1}
+    - _Color: {r: 0.95283014, g: 0.66889304, b: 0.35656214, a: 1}
   m_BuildTextureStacks: []
