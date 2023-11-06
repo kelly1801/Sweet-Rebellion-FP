@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CandyManager : InteractableObject
 {
@@ -10,6 +11,7 @@ public class CandyManager : InteractableObject
 
     [Header("VISUALS")]
     [SerializeField] private Transform fakeCandiesParent = null;
+    [SerializeField] private Image candyImage = null;
 
     [Header("OUTPUT")]
     [SerializeField] private Transform exitPoint = null;
@@ -29,7 +31,7 @@ public class CandyManager : InteractableObject
         }
         else
         {
-            Debug.Log("ERROR, you already have candy");
+            Debug.Log("ERROR: you already have candy");
         }
     }
 
@@ -40,6 +42,8 @@ public class CandyManager : InteractableObject
         candyPool.FillPool();
 
         StartCoroutine(FillMachineVisually());
+
+        candyImage.sprite = candyMachine.Sprite;
 
         GameObject exitCandy = Instantiate(candyMachine.Candy, exitPoint.position, Quaternion.identity);
         exitCandy.transform.parent = exitPoint;
@@ -56,7 +60,7 @@ public class CandyManager : InteractableObject
             yield return null;
         }
 
-        yield return new WaitForSeconds(10f);
+        yield return new WaitForSeconds(5f);
 
         foreach (Transform fakeCandy in fakeCandiesParent)
         {

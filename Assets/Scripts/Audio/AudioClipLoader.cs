@@ -5,7 +5,7 @@ public class AudioClipLoader : MonoBehaviour
 {
     #region serializedfields
     [SerializeField] private new Audio audio;
-    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioClip[] clips;
     #endregion
 
     #region privatemethods
@@ -17,7 +17,9 @@ public class AudioClipLoader : MonoBehaviour
         }
         else
         {
+            AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Length)];
             AudioSource audioSource = audio.AudioSource;
+            Debug.Log(audio.AudioSource == null);
             audioSource.Stop();
             audioSource.clip = clip;
             audioSource.Play();

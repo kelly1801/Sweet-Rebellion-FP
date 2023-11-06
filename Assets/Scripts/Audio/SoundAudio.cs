@@ -26,9 +26,9 @@ public class SoundAudio : Audio
     #endregion
 
     #region privatemethods
-    private new void Start()
+    private new void Awake()
     {
-        base.Start();
+        base.Awake();
 
         volumeChanged.AddListener(SetVolume);
 

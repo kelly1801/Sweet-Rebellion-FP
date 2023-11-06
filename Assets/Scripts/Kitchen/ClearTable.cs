@@ -5,6 +5,8 @@ public class ClearTable : InteractableObject
  
     public override void Interact(PlayerController player) {
 
+        Debug.Log("Table");
+
         if (!HasKitchenObject()) {
             // There is no KitchenObject here
             if (player.HasKitchenObject()) {

@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ea8cfab1d5d40c44a2482c6ebde2720, type: 3}
-  m_Name: maracuya
+  m_Name: Maracuya
   m_EditorClassIdentifier: 
   ingredientsList:
   - {fileID: 11400000, guid: 6e824932b9e2dfd4c9ea6d8994e1c044, type: 2}

@@ -12,15 +12,22 @@ public class CandyMachine : MonoBehaviour
     [SerializeField][Min(0)] private float fillSeconds = 0;
 
     private GameObject candy;
+    private Sprite sprite;
 
     private void Awake()
     {
         candy = candyObjectSO.prefab.gameObject;
+        sprite = candyObjectSO.elementIcon;
     }
 
     public GameObject Candy
     {
         get => candy;
+    }
+
+    public Sprite Sprite
+    {
+        get => sprite;
     }
 
     public int CandiesQuantity
