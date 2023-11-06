@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: CMG2
   m_EditorClassIdentifier: 
   ingredientsList:
-  - {fileID: 11400000, guid: 5083d60d41266a54caedd4e673292fcc, type: 2}
-  - {fileID: 11400000, guid: 6e824932b9e2dfd4c9ea6d8994e1c044, type: 2}
-  - {fileID: 11400000, guid: 6d916b04251f3614a95704e07e2c50f3, type: 2}
+  - {fileID: 11400000, guid: 1b5bb2cd692a9f64da55a4eb55ca1a6b, type: 2}
+  - {fileID: 11400000, guid: 0ba2b1357113ea844ba167429fc83c8a, type: 2}
+  - {fileID: 11400000, guid: 16fba48cb01f2384998a3250dfa61e89, type: 2}
   recipeName: Chocolate-Macaroon-Gummy
   recipeValue: 100

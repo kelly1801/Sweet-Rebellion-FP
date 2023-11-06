@@ -6,16 +6,14 @@ using UnityEngine.UI;
 
 public class RecipeUI : MonoBehaviour
 {
-    [SerializeField] private Transform[] iconSpots;
+    [SerializeField] private Image[] icons;
 
     public void SetRecipeIngredients(RecipeSO recipe)
     {
-        List<Transform> availableIconSpot = new List<Transform>(iconSpots);
-
-        for (int i = 0; i < recipe.ingredientsList.Count; i++)
+        for (int i = 0; i < icons.Length; i++)
         {
             KitchenObjectSO ingredient = recipe.ingredientsList[i];
-            availableIconSpot[i].GetComponent<Image>().sprite = ingredient.elementIcon;
+            icons[i].sprite = ingredient.elementIcon;
         }
     }
 }

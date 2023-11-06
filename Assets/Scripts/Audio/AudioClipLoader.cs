@@ -19,7 +19,6 @@ public class AudioClipLoader : MonoBehaviour
         {
             AudioClip clip = clips[UnityEngine.Random.Range(0, clips.Length)];
             AudioSource audioSource = audio.AudioSource;
-            Debug.Log(audio.AudioSource == null);
             audioSource.Stop();
             audioSource.clip = clip;
             audioSource.Play();

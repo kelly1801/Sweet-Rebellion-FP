@@ -30,6 +30,10 @@ public class SoundAudio : Audio
     {
         base.Awake();
 
+        audioSource.loop = false;
+        audioSource.playOnAwake = false;
+        audioSource.spatialBlend = 0.5f;
+
         volumeChanged.AddListener(SetVolume);
 
         SetVolume();

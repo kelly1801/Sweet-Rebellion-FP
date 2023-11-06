@@ -10,8 +10,9 @@ public class CandyManager : InteractableObject
     [SerializeField] private Transform candiesParent = null;
 
     [Header("VISUALS")]
-    [SerializeField] private Transform fakeCandiesParent = null;
-    [SerializeField] private Image candyImage = null;
+    [SerializeField] private Transform fakeCandies = null;
+    [SerializeField] private Renderer candyPhotoBorder = null;
+    [SerializeField] private Renderer candyPhoto = null;
 
     [Header("OUTPUT")]
     [SerializeField] private Transform exitPoint = null;
@@ -35,40 +36,42 @@ public class CandyManager : InteractableObject
         }
     }
 
+    private void Awake()
+    {
+        FillMachineVisually();
+    }
+
     private void Start()
     {
         candyPool = new(candyMachine.Candy, candiesParent, candyMachine.CandiesQuantity);
 
         candyPool.FillPool();
 
-        StartCoroutine(FillMachineVisually());
+        Material newBorderMaterial = new(candyPhotoBorder.GetComponent<Renderer>().sharedMaterial)
+        {
+            mainTexture = candyMachine.Sprite.texture
+        };
+        Renderer borderRenderer = candyPhotoBorder.GetComponent<Renderer>();
+        borderRenderer.material = newBorderMaterial;
 
-        candyImage.sprite = candyMachine.Sprite;
+        Material newPhotoMaterial = new(candyPhoto.GetComponent<Renderer>().sharedMaterial)
+        {
+            mainTexture = candyMachine.Sprite.texture
+        };
+        Renderer photoRenderer = candyPhoto.GetComponent<Renderer>();
+        photoRenderer.material = newPhotoMaterial;
 
         GameObject exitCandy = Instantiate(candyMachine.Candy, exitPoint.position, Quaternion.identity);
         exitCandy.transform.parent = exitPoint;
     }
 
-    private IEnumerator FillMachineVisually()
+    private void FillMachineVisually()
     {
-        for (int i = 0; i < candyMachine.FakeCandiesQuantity; i++)
+        foreach (Transform fakeCandyTransform in fakeCandies)
         {
-            GameObject candyInstance = Instantiate(candyMachine.FakeCandy, fakeCandiesParent.position, Quaternion.identity);
-            candyInstance.transform.parent = fakeCandiesParent;
+            GameObject candyInstance = Instantiate(candyMachine.FakeCandy, fakeCandyTransform.position, fakeCandyTransform.rotation);
+            candyInstance.transform.parent = fakeCandyTransform;
             candyInstance.SetActive(true);
-            yield return new WaitForSeconds(candyMachine.FillSeconds);
-            yield return null;
-        }
-
-        yield return new WaitForSeconds(5f);
-
-        foreach (Transform fakeCandy in fakeCandiesParent)
-        {
-            Rigidbody rigidBody = fakeCandy.gameObject.GetComponent<Rigidbody>();
-            Destroy(rigidBody);
-
-            Collider collider = fakeCandy.gameObject.GetComponent<Collider>();
-            Destroy(collider);
         }
     }
 

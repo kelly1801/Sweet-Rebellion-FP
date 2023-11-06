@@ -8,8 +8,9 @@ public class DeliverManagerUI : MonoBehaviour
 {
     [SerializeField] private Transform container;
     [SerializeField] private Transform recipeTemplate;
-    [SerializeField] private Slider moneySlider;
-    [SerializeField] private TextMeshProUGUI moneyText;
+    [SerializeField] private ImageFiller coinPork;
+    [SerializeField] private TMP_Text moneyText;
+    [SerializeField] private RandomAudioPlayer randomAudioPlayer;
 
     private void Awake()
     {
@@ -18,6 +19,9 @@ public class DeliverManagerUI : MonoBehaviour
 
     private void Start()
     {
+        moneyText.text = "$0";
+        coinPork.FillAmount = 0;
+
         DeliveryManager.Instance.OnRecipeSpawned += DeliveryManager_OnRecipeSpawned;
         DeliveryManager.Instance.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
 
@@ -31,13 +35,15 @@ public class DeliverManagerUI : MonoBehaviour
 
     private void DeliveryManager_OnRecipeCompleted(object sender, RecipeCompletedEventArgs e)
     {
+        randomAudioPlayer.PlayRandomSound();
+
         UpdateVisual();
         // Update the money slider and text
-        moneySlider.value += e.RecipeValue;
-        moneyText.text = "$ " + moneySlider.value.ToString();
+        coinPork.Fill(coinPork.FillAmount + e.RecipeValue,GameManager.Instance.DebtGoal);
+        moneyText.text = $"${coinPork.FillAmount}";
     
         // Update the GameManager's payedDebt value
-        GameManager.Instance.payedDebt = moneySlider.value;
+        GameManager.Instance.payedDebt = coinPork.FillAmount;
     }
 
 
