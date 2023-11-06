@@ -1,8 +1,11 @@
 using UnityEngine;
 
+[RequireComponent(typeof(RandomAudioPlayer))]
 public class ClearTable : InteractableObject
 {
  
+    [SerializeField] private RandomAudioPlayer randomAudioPlayer;
+
     public override void Interact(PlayerController player) {
 
         Debug.Log("Table");
@@ -12,6 +15,7 @@ public class ClearTable : InteractableObject
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 player.GetKitchenObject().SetKitchenObjectParent(this);
+                randomAudioPlayer.PlayRandomSound();
             } else {
                 // Player not carrying anything
             }

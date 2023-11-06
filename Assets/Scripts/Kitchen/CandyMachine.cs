@@ -8,8 +8,6 @@ public class CandyMachine : MonoBehaviour
 
     [Header("FAKE CANDIES")]
     [SerializeField] private GameObject fakeCandy = null;
-    [SerializeField][Min(0)] private float fakeCandiesQuantity = 0;
-    [SerializeField][Min(0)] private float fillSeconds = 0;
 
     private GameObject candy;
     private Sprite sprite;
@@ -38,15 +36,5 @@ public class CandyMachine : MonoBehaviour
     public GameObject FakeCandy
     {
         get => fakeCandy;
-    }
-
-    public float FakeCandiesQuantity
-    {
-        get => fakeCandiesQuantity;
-    }
-
-    public float FillSeconds
-    {
-        get => fillSeconds;
     }
 }

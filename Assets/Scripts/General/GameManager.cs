@@ -2,11 +2,11 @@ using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
-using TMPro;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance; 
+    private static GameManager instance;
     public static GameManager Instance { get { return instance; } }
 
 
@@ -15,12 +15,27 @@ public class GameManager : MonoBehaviour
 
     [SerializeField, Min(0)] private float timerDurationInMinutes = 5f;
     [SerializeField] private int debtGoal;
-    
-    [SerializeField] TextMeshProUGUI durationText;
+    public int DebtGoal
+    {
+        get => debtGoal;
+    }
 
-    
+    [SerializeField] private ImageFiller timerImage;
+
     public float payedDebt;
     private bool victoryTriggered = false;
+
+    private float remainingSeconds = 0;
+    public float RemainingSeconds
+    {
+        get => remainingSeconds;
+    }
+
+    public float GameMinutes
+    {
+        get => timerDurationInMinutes;
+    }
+
     private static bool gameOver = false;
     public static bool GameOver { get => gameOver; set => gameOver = value; }
 
@@ -44,6 +59,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+        timerImage.FillAmount = 1f;
+
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (IsValidScene(currentSceneName))
         {
@@ -71,7 +88,8 @@ public class GameManager : MonoBehaviour
             Debug.Log("YOU PAYED YOUR DEEEEEEEEEEBT");
             OnVictory();
         }
-        
+
+        /*
         // Calculate remaining time in minutes and seconds
         float timeRemaining = Mathf.Max(timerDurationInMinutes * 60 - Time.timeSinceLevelLoad, 0);
         int minutes = Mathf.FloorToInt(timeRemaining / 60f);
@@ -79,16 +97,19 @@ public class GameManager : MonoBehaviour
 
         // Update the TextMeshPro text
         durationText.text = string.Format("{0:00}:{1:00}", minutes, seconds);
+        */
     }
 
     IEnumerator StartTimer(float durationInMinutes)
     {
-        float durationInSeconds = durationInMinutes * 60;
+        float totalSeconds = durationInMinutes * 60;
+        remainingSeconds = totalSeconds;
 
-        while (durationInSeconds > 0 && payedDebt < debtGoal)
+        while (remainingSeconds > 0 && payedDebt < debtGoal)
         {
             yield return new WaitForSeconds(1f);
-            durationInSeconds -= 1;
+            remainingSeconds -= 1;
+            timerImage.Fill(remainingSeconds, totalSeconds);
         }
 
         if (payedDebt < debtGoal)
@@ -106,7 +127,7 @@ public class GameManager : MonoBehaviour
         get { return Time.timeScale == 0; }
         set { Time.timeScale = value ? 0 : 1; OnPaused(); }
     }
-// event invocations
+    // event invocations
     public static void OnPaused()
     {
         OnPauseEvent?.Invoke();

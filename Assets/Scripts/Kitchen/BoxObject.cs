@@ -3,8 +3,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(RandomAudioPlayer))]
 public class BoxObject : KitchenObject
 {
+    [SerializeField] private RandomAudioPlayer randomAudioPlayer;
+
     public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
 
     public class OnIngredientAddedEventArgs : EventArgs
@@ -31,6 +34,7 @@ public class BoxObject : KitchenObject
         }
         else
         {
+            randomAudioPlayer.PlayRandomSound();
             ingredientsList.Add(ingredient);
             OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs 
             

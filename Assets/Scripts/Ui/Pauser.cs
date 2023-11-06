@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -44,9 +45,15 @@ public class Pauser : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            Audio.Play(audio, clip, 1.5f);
-            Pause();
+            StartCoroutine(PlayAsynchronically());
         }
+    }
+
+    private IEnumerator PlayAsynchronically()
+    {
+        Audio.Play(audio, clip, 1.5f);
+        yield return new WaitForSeconds(1);
+        Pause();
     }
 
     private void Continue()
