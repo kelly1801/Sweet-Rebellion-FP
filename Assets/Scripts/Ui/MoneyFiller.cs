@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -43,11 +44,13 @@ public class MoneyFiller : ImageFiller
         {
             moneyField.text = $"{moneyPlaceholder}${GameManager.Instance.payedDebt}";
         }
+
         if (moneyGoalField != null)
         {
             moneyGoalField.text = $"{moneyGoalPlaceholder}${GameManager.Instance.DebtGoal}";
         }
-        if (moneyGoalField != null)
+
+        if (percentageField != null)
         {
             string p = $"{FillAmount * 100}";
             percentageField.text = $"{percentagePlaceholder}{p}%";

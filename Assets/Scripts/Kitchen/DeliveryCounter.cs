@@ -5,7 +5,8 @@ using UnityEngine;
 [RequireComponent(typeof(RandomAudioPlayer))]
 public class DeliveryCounter :  InteractableObject
 {
-   [SerializeField] private RandomAudioPlayer randomAudioPlayer;
+   [SerializeField] private RandomAudioPlayer piggyCashSounds;
+   [SerializeField] private RandomAudioPlayer twinklesSounds;
 
    public override void Interact(PlayerController player)
    {
@@ -13,10 +14,12 @@ public class DeliveryCounter :  InteractableObject
       {
          if (player.GetKitchenObject().TryGetBox(out BoxObject box))
          {
-            randomAudioPlayer.PlayRandomSound();
             DeliveryManager.Instance.DeliverRecipe(box);
             player.GetKitchenObject().gameObject.SetActive(false);
             player.ClearKitchenObject();
+            
+            piggyCashSounds.PlayRandomSound();
+            twinklesSounds.PlayRandomSound();
          }
       }
    }

@@ -20,7 +20,7 @@ public class HomeButton : MonoBehaviour
     {
         Audio.Stop();
         UnpauseGame();
-        SceneLoader.LoadFirstScene();
+        ScenesManager.Scene = "Home";
     }
 
     private void UnpauseGame()

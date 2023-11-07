@@ -43,7 +43,7 @@ public abstract class Audio : MonoBehaviour
 
         audioStopped.AddListener(OnAudioStopped);
 
-        GameManager.OnPauseEvent += Pause;
+        GameManager.PauseEvent += Pause;
     }
     #endregion
 
@@ -67,7 +67,7 @@ public abstract class Audio : MonoBehaviour
 
     private void OnDestroy()
     {
-        GameManager.OnPauseEvent -= Pause;
+        GameManager.PauseEvent -= Pause;
     }
     #endregion
 }

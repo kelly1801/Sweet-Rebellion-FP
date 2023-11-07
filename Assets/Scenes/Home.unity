@@ -1982,11 +1982,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 529205274}
+      addedObject: {fileID: 529205275}
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 529205275}
+      addedObject: {fileID: 529205274}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
 --- !u!224 &529205272 stripped
 RectTransform:
@@ -2425,11 +2425,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1245957791}
+      addedObject: {fileID: 1245957792}
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1245957792}
+      addedObject: {fileID: 1245957791}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
 --- !u!224 &698222891 stripped
 RectTransform:
@@ -3256,7 +3256,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &967251791
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3264,7 +3264,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 967251790}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0cce551220666945ac93791fbf7047b, type: 3}
   m_Name: 
@@ -3691,11 +3691,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1101176301}
+      addedObject: {fileID: 1101176302}
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 1101176302}
+      addedObject: {fileID: 1101176301}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
 --- !u!224 &1101176299 stripped
 RectTransform:
@@ -3906,7 +3906,7 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1196479222
 RectTransform:
@@ -5191,11 +5191,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2007341440}
+      addedObject: {fileID: 2007341441}
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 2007341441}
+      addedObject: {fileID: 2007341440}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
 --- !u!224 &2007341439 stripped
 RectTransform:
@@ -6010,11 +6010,11 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3774530985660382920}
+      addedObject: {fileID: 3774530985660382921}
     - targetCorrespondingSourceObject: {fileID: 8498522333862961177, guid: 5f6d738dc4fb26346ae642230e9b7611,
         type: 3}
       insertIndex: -1
-      addedObject: {fileID: 3774530985660382921}
+      addedObject: {fileID: 3774530985660382920}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:

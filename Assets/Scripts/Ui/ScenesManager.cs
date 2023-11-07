@@ -8,19 +8,17 @@ public class ScenesManager : MonoBehaviour
 {
     #region publicstaticfields
     public static ScenesManager Instance { get => instance; }
-    public static int ScenesQuantity { get => scenesQuantity; }
     #endregion
 
     #region privatestaticfields
     private static ScenesManager instance;
     private static UnityEvent onSceneChange;
-    private static int scene;
-    private static readonly int scenesQuantity = 4;
+    private static string scene;
     private static readonly int loadSceneAfter = 2; // seconds
     #endregion
 
     #region publicstaticproperties
-    public static int Scene
+    public static string Scene
     {
         get { return scene; }
         set
@@ -62,8 +60,6 @@ public class ScenesManager : MonoBehaviour
 
     private void Start()
     {
-        scene = 0;
-
         SceneManager.sceneLoaded += OnEsceneLoaded;
 
         onSceneChange = new();
@@ -96,7 +92,7 @@ public class ScenesManager : MonoBehaviour
     #endregion
 
     #region coroutines
-    private IEnumerator LoadScene(int scene, float seconds)
+    private IEnumerator LoadScene(string scene, float seconds)
     {
         yield return new WaitForSeconds(seconds);
         SceneManager.LoadScene(scene);

@@ -55,7 +55,7 @@ public class Pauser : MonoBehaviour
         {
             Audio.Play(audio, clip, 1.5f);
         }
-        yield return new WaitForSeconds(1);
+        yield return null;
         Pause();
     }
 

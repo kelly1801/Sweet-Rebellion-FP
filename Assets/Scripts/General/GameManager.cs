@@ -15,38 +15,43 @@ public class GameManager : MonoBehaviour
     [SerializeField, Min(0)] private float timerDurationInMinutes = 5f;
     [SerializeField] private int debtGoal;
 
-    [SerializeField] private float delay;
-    [SerializeField] private GameObject ReadyPanel;
-
-    private PlayerController playerController;
-
     public int DebtGoal
     {
         get => debtGoal;
     }
 
-    [SerializeField] private GameObject scorePanel;
-    [SerializeField] private ImageFiller timerImage;
-
     public float payedDebt;
     private bool victoryTriggered = false;
-
-    private float remainingSeconds = 0;
-    public float RemainingSeconds
-    {
-        get => remainingSeconds;
-    }
 
     public float GameMinutes
     {
         get => timerDurationInMinutes;
     }
 
+    private float remainingSeconds = 999999999;
+
+    public float RemainingSeconds
+    {
+        get => remainingSeconds;
+    }
+
+    private bool hurryUp;
+
     private static bool gameOver = false;
     public static bool GameOver { get => gameOver; set => gameOver = value; }
 
     public delegate void PauseDelegate();
-    public static event PauseDelegate OnPauseEvent;
+    public static event PauseDelegate PauseEvent;
+
+    public delegate void HurryUpDelegate();
+    public static event HurryUpDelegate HurryUpEventDelegate;
+
+    public delegate void GameOverDelegate();
+    public static event GameOverDelegate GameOverEventDelegate;
+
+    public delegate void VictoryDelegate();
+    public static event VictoryDelegate VictoryEventDelegate;
+
 
     [SerializeField] private string[] validSceneNames; // Array to store valid scene names
 
@@ -61,34 +66,7 @@ public class GameManager : MonoBehaviour
         {
             Destroy(gameObject);
         }
-    }
 
-    void Start()
-    {
-        StartCoroutine(WaitReadyPanel());
-    }
-
-    private IEnumerator WaitReadyPanel()
-    {
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
-
-        playerController.enabled = false;
-
-        float musicVolume = MusicAudio.Volume;
-        float soundVolume = SoundAudio.Volume;
-
-        MusicAudio.Volume /= 1.5f;
-        SoundAudio.Volume /= 1.5f;
-
-        yield return new WaitForSeconds(delay);
-
-        MusicAudio.Volume = musicVolume;
-        SoundAudio.Volume = soundVolume;
-
-        PlayerController.Instance.enabled = true;
-        Destroy(ReadyPanel);
-
-        timerImage.FillAmount = 1f;
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (IsValidScene(currentSceneName))
         {
@@ -130,14 +108,22 @@ public class GameManager : MonoBehaviour
 
     IEnumerator StartTimer(float durationInMinutes)
     {
+        hurryUp = false;
+
         float totalSeconds = durationInMinutes * 60;
+
         remainingSeconds = totalSeconds;
 
         while (remainingSeconds > 0 && payedDebt < debtGoal)
         {
             yield return new WaitForSeconds(1f);
             remainingSeconds -= 1;
-            timerImage.Fill(remainingSeconds, totalSeconds);
+
+            if (hurryUp == false && remainingSeconds < totalSeconds * 0.25f)
+            {
+                hurryUp = true;
+                OnHurryUp();
+            }
         }
 
         if (payedDebt < debtGoal)
@@ -158,22 +144,27 @@ public class GameManager : MonoBehaviour
     // event invocations
     public static void OnPaused()
     {
-        OnPauseEvent?.Invoke();
+        PauseEvent?.Invoke();
+    }
+
+    public static void OnHurryUp()
+    {
+        HurryUpEventDelegate?.Invoke();
     }
 
     private void OnVictory()
     {
         gameOver = false;
-        scorePanel.SetActive(true);
+        PlayerController.Instance.enabled = false;
+        VictoryEventDelegate();
         VictoryEvent?.Invoke(this, EventArgs.Empty);
     }
 
     public void OnGameOver()
     {
         gameOver = true;
-        scorePanel.SetActive(true);
-        Debug.Log("YOU LOOOOOOOOOOST");
+        PlayerController.Instance.enabled = false;
+        GameOverEventDelegate();
         GameOverEvent?.Invoke(this, EventArgs.Empty);
-
     }
 }

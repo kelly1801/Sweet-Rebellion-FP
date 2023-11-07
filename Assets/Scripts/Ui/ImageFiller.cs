@@ -1,9 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-
 [RequireComponent(typeof(Image))]
-public class ImageFiller : MonoBehaviour
+public abstract class ImageFiller : MonoBehaviour
 {
     private Image image;
 
@@ -17,7 +16,7 @@ public class ImageFiller : MonoBehaviour
         image = gameObject.GetComponent<Image>();
     }
 
-    public void Fill(float remainingValue, float totalValue)
+    protected void Fill(float remainingValue, float totalValue)
     {
         image.fillAmount = remainingValue / totalValue;
     }

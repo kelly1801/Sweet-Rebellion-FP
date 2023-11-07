@@ -13,6 +13,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: FakeGummy
       objectReference: {fileID: 0}
+    - target: {fileID: 5128039135287012575, guid: 5a8937992a43cb044bb865ed4cb7f2c1,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128039135287012575, guid: 5a8937992a43cb044bb865ed4cb7f2c1,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5128039135287012575, guid: 5a8937992a43cb044bb865ed4cb7f2c1,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5428296073594752404, guid: 5a8937992a43cb044bb865ed4cb7f2c1,
         type: 3}
       propertyPath: m_LocalScale.x
