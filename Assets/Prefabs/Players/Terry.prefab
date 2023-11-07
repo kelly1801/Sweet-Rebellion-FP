@@ -46,7 +46,7 @@ GameObject:
   - component: {fileID: 4975810796773159956}
   m_Layer: 0
   m_Name: Terry
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -704,7 +704,7 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: fe49537e0d099294abb4f8beeb7bc9fb, type: 2}
+      objectReference: {fileID: 2100000, guid: 2023b3e7a329ff741a1ce3a9e1302110, type: 2}
     - target: {fileID: 3291163720618517394, guid: cbda36cfd50ef3f43a6aa18bb9144a56,
         type: 3}
       propertyPath: m_LocalScale.x
@@ -885,6 +885,10 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 205768359663447892, guid: cbda36cfd50ef3f43a6aa18bb9144a56,
         type: 3}
       insertIndex: -1
+      addedObject: {fileID: 6219212019549415906}
+    - targetCorrespondingSourceObject: {fileID: 205768359663447892, guid: cbda36cfd50ef3f43a6aa18bb9144a56,
+        type: 3}
+      insertIndex: -1
       addedObject: {fileID: 7399241797387233833}
     - targetCorrespondingSourceObject: {fileID: 3100114576813497124, guid: cbda36cfd50ef3f43a6aa18bb9144a56,
         type: 3}
@@ -1023,6 +1027,19 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
+--- !u!114 &6219212019549415906
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2157886633443598271}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 84af4256aa601b64f8498ca960fa646a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multiplier: 1
 --- !u!114 &7399241797387233833
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1035,7 +1052,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a6b130eae282249929bd27ac47ac54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audioSource: {fileID: 6399560719864174554}
+  audio: {fileID: 6219212019549415906}
 --- !u!1 &2302012824900497922 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 61703741823206121, guid: cbda36cfd50ef3f43a6aa18bb9144a56,

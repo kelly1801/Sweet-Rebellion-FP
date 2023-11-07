@@ -10,7 +10,9 @@ TrueTypeFontImporter:
   includeFontData: 1
   fontNames:
   - Tilt Neon
-  fallbackFontReferences: []
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 3d577615235b59b41b8ff209fcd3fb19, type: 3}
+  - {fileID: 12800000, guid: 2a6f3d83c46cfd34db0f2fba83669e49, type: 3}
   customCharacters: 
   fontRenderingMode: 0
   ascentCalculationMode: 1

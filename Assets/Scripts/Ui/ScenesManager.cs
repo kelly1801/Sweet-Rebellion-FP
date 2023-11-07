@@ -16,7 +16,7 @@ public class ScenesManager : MonoBehaviour
     private static UnityEvent onSceneChange;
     private static int scene;
     private static readonly int scenesQuantity = 4;
-    private static readonly int loadSceneAfter = 1; // seconds
+    private static readonly int loadSceneAfter = 2; // seconds
     #endregion
 
     #region publicstaticproperties
