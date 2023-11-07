@@ -1,4 +1,5 @@
 using System;
+using Unity.Mathematics;
 using UnityEngine;
 
 public class KitchenObject : MonoBehaviour
@@ -28,6 +29,7 @@ public class KitchenObject : MonoBehaviour
         
         transform.parent = kitchenElementParent.GetKitchenElementNewTransform();
         transform.localPosition = Vector3.zero;
+        transform.rotation = quaternion.identity;
    
     }
 

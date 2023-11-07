@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class SelectedTable : MonoBehaviour
+public class SelectedInteractable : MonoBehaviour
 {
     [SerializeField] private GameObject visualObject;
     [SerializeField] private InteractableObject interactableObject;
@@ -11,6 +11,7 @@ public class SelectedTable : MonoBehaviour
 
     private void Player_OnSelectedElementChanged(object sender, PlayerController.OnSelectedElementChangedEventArgs e)
     {
+        
         InteractableObject selectedInteractableObject = e.selectedInteractableObject;
         if (selectedInteractableObject == interactableObject)
         {

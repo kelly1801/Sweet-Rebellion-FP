@@ -10,7 +10,11 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
     public class OnSelectedElementChangedEventArgs : EventArgs
     {
         public InteractableObject selectedInteractableObject;
-    }
+
+        public OnSelectedElementChangedEventArgs(InteractableObject selectedObject)
+        {
+            selectedInteractableObject = selectedObject;
+        }    }
 
     [SerializeField] private float moveSpeed = 5.0f;
     [SerializeField] private float rotateSpeed = 5.0f;
@@ -142,9 +146,10 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         if (selectedInteractableObject != newSelectedInteractableObject)
         {
             selectedInteractableObject = newSelectedInteractableObject;
-            OnSelectedElementChanged?.Invoke(this, new OnSelectedElementChangedEventArgs());
+            OnSelectedElementChanged?.Invoke(this, new OnSelectedElementChangedEventArgs(selectedInteractableObject));
         }
     }
+
     public Transform GetKitchenElementNewTransform()
     {
         return pickPoint;
