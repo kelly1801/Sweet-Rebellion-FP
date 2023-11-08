@@ -1,12 +1,14 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq.Expressions;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomAudioPlayer))]
 public class BoxObject : KitchenObject
 {
     [SerializeField] private RandomAudioPlayer randomAudioPlayer;
+    [SerializeField] private ParticleSystem stars;
 
     public event EventHandler<OnIngredientAddedEventArgs> OnIngredientAdded;
 
@@ -35,19 +37,37 @@ public class BoxObject : KitchenObject
         else
         {
             randomAudioPlayer.PlayRandomSound();
-            ingredientsList.Add(ingredient);
-            OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs 
-            
+
+            try
             {
-              _ingredient = ingredient
+                stars.gameObject.SetActive(true);
+                stars.Play();
+                StartCoroutine(StopParticlesAfter(1f));
+            }
+            catch (Exception)
+            {
+                Debug.Log($"{gameObject.name}: Particle system is null");
+            }
+
+            ingredientsList.Add(ingredient);
+            OnIngredientAdded?.Invoke(this, new OnIngredientAddedEventArgs
+            {
+                _ingredient = ingredient
             });
             return true;
         }
-        
+
     }
-    
-    public List<KitchenObjectSO> GetKitchenObjectSOList() {
+
+    public List<KitchenObjectSO> GetKitchenObjectSOList()
+    {
         return ingredientsList;
+    }
+
+    private IEnumerator StopParticlesAfter(float seconds)
+    {
+        yield return new WaitForSeconds(seconds);
+        stars.gameObject.SetActive(false);
     }
 
 }
