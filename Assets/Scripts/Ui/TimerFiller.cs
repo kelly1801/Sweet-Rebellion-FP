@@ -8,18 +8,22 @@ public class TimerFiller : ImageFiller
 
     private float gameSeconds;
 
+    private GameManager gameManager;
+
     protected new void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
         base.Start();
 
         FillAmount = 100;
 
-        gameSeconds = GameManager.Instance.GameMinutes * 60f;
+        gameSeconds = gameManager.GameMinutes * 60f;
     }
 
     private void FixedUpdate()
     {
-        this.Fill(GameManager.Instance.RemainingSeconds, gameSeconds);
+        this.Fill(gameManager.RemainingSeconds, gameSeconds);
     }
 
 }

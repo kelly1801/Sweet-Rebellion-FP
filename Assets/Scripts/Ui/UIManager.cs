@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     [Header("INI")]
     [SerializeField] private AnimationClip readyClip;
     [SerializeField] private GameObject readyPanel;
+    [SerializeField] private GameObject controlsPanel;
 
     [Header("MID")]
     [SerializeField] private AnimationClip hurryUpClip;
@@ -15,23 +16,36 @@ public class UIManager : MonoBehaviour
     [SerializeField] private GameObject gameOverPanel;
     [SerializeField] private GameObject victoryPanel;
 
+    private GameManager gameManager;
+
     private void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
         StartCoroutine(ActivateReadyPanel());
 
-        GameManager.HurryUpEventDelegate += () => StartCoroutine(ActivateHurryUpPanel());
-        GameManager.GameOverEventDelegate += ActivateGameOverPanel;
-        GameManager.VictoryEventDelegate += ActivateVictoryPanel;
+        gameManager.HurryUpEventDelegate += () => StartCoroutine(ActivateHurryUpPanel());
+        gameManager.GameOverEventDelegate += ActivateGameOverPanel;
+        gameManager.VictoryEventDelegate += ActivateVictoryPanel;
 
         readyPanel.SetActive(true);
+        controlsPanel.SetActive(false);
         hurryUpPanel.SetActive(false);
         gameOverPanel.SetActive(false);
         victoryPanel.SetActive(false);
+
+    }
+
+    private IEnumerator DeactivateControls()
+    {
+        controlsPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Destroy(controlsPanel);
     }
 
     private IEnumerator ActivateReadyPanel()
     {
-        GameManager.Instance.enabled = false;
+        gameManager.enabled = false;
 
         readyPanel.SetActive(true);
 
@@ -53,7 +67,9 @@ public class UIManager : MonoBehaviour
 
         Destroy(readyPanel);
 
-        GameManager.Instance.enabled = true;
+        gameManager.enabled = true;
+
+        DeactivateControls();
     }
 
     private IEnumerator ActivateHurryUpPanel()

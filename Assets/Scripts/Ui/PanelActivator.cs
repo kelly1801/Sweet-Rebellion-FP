@@ -17,13 +17,8 @@ public class PanelActivator : MonoBehaviour
     private void Start()
     {
         _button = gameObject.GetComponent<Button>();
-        _button.onClick.AddListener(Activate);
+        _button.onClick.AddListener(() => Home.Instance.Activate(currentPanel, nextPanel));
     }
 
-    private void Activate()
-    {
-        nextPanel.SetActive(true);
-        currentPanel.SetActive(false);
-    }
     #endregion
 }

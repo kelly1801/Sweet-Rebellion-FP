@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    private static GameManager instance;
-    public static GameManager Instance { get { return instance; } }
 
     public event EventHandler VictoryEvent;
     public event EventHandler GameOverEvent;
@@ -38,35 +36,25 @@ public class GameManager : MonoBehaviour
     private bool hurryUp;
 
     private static bool gameOver = false;
-    public static bool GameOver { get => gameOver; set => gameOver = value; }
+    public bool GameOver { get => gameOver; set => gameOver = value; }
 
     public delegate void PauseDelegate();
     public static event PauseDelegate PauseEvent;
 
     public delegate void HurryUpDelegate();
-    public static event HurryUpDelegate HurryUpEventDelegate;
+    public event HurryUpDelegate HurryUpEventDelegate;
 
     public delegate void GameOverDelegate();
-    public static event GameOverDelegate GameOverEventDelegate;
+    public event GameOverDelegate GameOverEventDelegate;
 
     public delegate void VictoryDelegate();
-    public static event VictoryDelegate VictoryEventDelegate;
+    public event VictoryDelegate VictoryEventDelegate;
 
 
     [SerializeField] private string[] validSceneNames; // Array to store valid scene names
 
-    void Awake()
+    void Start()
     {
-        if (instance == null)
-        {
-            instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-        else
-        {
-            Destroy(gameObject);
-        }
-
         string currentSceneName = SceneManager.GetActiveScene().name;
         if (IsValidScene(currentSceneName))
         {
@@ -147,7 +135,7 @@ public class GameManager : MonoBehaviour
         PauseEvent?.Invoke();
     }
 
-    public static void OnHurryUp()
+    public void OnHurryUp()
     {
         HurryUpEventDelegate?.Invoke();
     }

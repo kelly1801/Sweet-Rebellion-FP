@@ -3,16 +3,22 @@ using UnityEngine;
 
 public class AudioObserver : MonoBehaviour
 {
-
     [SerializeField] private new Audio audio;
     [SerializeField] private AudioClip gameOverClip;
     [SerializeField] private AudioClip victoryClip;
 
+    private static AudioClip endingClip = null;
+    public static AudioClip AudioClip { get => endingClip; }
+
+    private GameManager gameManager;
+
     private void Start()
     {
-        GameManager.HurryUpEventDelegate += RunHurryUpSettings;
-        GameManager.GameOverEventDelegate += RunGameOverMusic;
-        GameManager.VictoryEventDelegate += RunVictoryMusic;
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
+        gameManager.HurryUpEventDelegate += RunHurryUpSettings;
+        gameManager.GameOverEventDelegate += RunGameOverMusic;
+        gameManager.VictoryEventDelegate += RunVictoryMusic;
     }
 
     private void RunVictoryMusic()
@@ -42,8 +48,9 @@ public class AudioObserver : MonoBehaviour
 
     private void RunEndingClip(AudioClip clip)
     {
+        endingClip = clip;
         NormalizePitch();
-        audio.AudioSource.clip = victoryClip;
+        audio.AudioSource.clip = clip;
         audio.AudioSource.Play();
     }
 }

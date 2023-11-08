@@ -16,8 +16,12 @@ public class MoneyFiller : ImageFiller
     [SerializeField] private string percentagePlaceholder = "";
     [SerializeField] private TMP_Text percentageField;
 
+    private GameManager gameManager;
+
     protected new void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
         base.Start();
 
         FillAmount = 0;
@@ -38,16 +42,16 @@ public class MoneyFiller : ImageFiller
 
     private void FixedUpdate()
     {
-        this.FillAmount = GameManager.Instance.payedDebt / GameManager.Instance.DebtGoal;
+        this.FillAmount = gameManager.payedDebt / gameManager.DebtGoal;
 
         if (moneyField != null)
         {
-            moneyField.text = $"{moneyPlaceholder}${GameManager.Instance.payedDebt}";
+            moneyField.text = $"{moneyPlaceholder}${gameManager.payedDebt}";
         }
 
         if (moneyGoalField != null)
         {
-            moneyGoalField.text = $"{moneyGoalPlaceholder}${GameManager.Instance.DebtGoal}";
+            moneyGoalField.text = $"{moneyGoalPlaceholder}${gameManager.DebtGoal}";
         }
 
         if (percentageField != null)

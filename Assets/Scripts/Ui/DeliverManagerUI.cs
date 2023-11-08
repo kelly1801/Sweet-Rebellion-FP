@@ -10,6 +10,8 @@ public class DeliverManagerUI : MonoBehaviour
     [SerializeField] private Transform recipeTemplate;
     [SerializeField] private RandomAudioPlayer randomAudioPlayer;
 
+    private GameManager gameManager;
+
     private void Awake()
     {
         recipeTemplate.gameObject.SetActive(false);
@@ -17,6 +19,8 @@ public class DeliverManagerUI : MonoBehaviour
 
     private void Start()
     {
+        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+
         DeliveryManager.Instance.OnRecipeSpawned += DeliveryManager_OnRecipeSpawned;
         DeliveryManager.Instance.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
 
@@ -34,9 +38,9 @@ public class DeliverManagerUI : MonoBehaviour
 
         UpdateVisual();
         // Update the money slider and text
-    
+
         // Update the GameManager's payedDebt value
-        GameManager.Instance.payedDebt += e.RecipeValue;
+        gameManager.payedDebt += e.RecipeValue;
     }
 
 
@@ -45,16 +49,16 @@ public class DeliverManagerUI : MonoBehaviour
         foreach (Transform template in container)
         {
             if (template == recipeTemplate) continue;
-            
-                template.gameObject.SetActive(false);
-            
+
+            template.gameObject.SetActive(false);
+
         }
 
         foreach (RecipeSO recipe in DeliveryManager.Instance.GetWaitingRecipes())
         {
-                Transform recipeTransform = Instantiate(recipeTemplate, container);
-                recipeTransform.gameObject.SetActive(true);
-                recipeTransform.GetComponent<RecipeUI>().SetRecipeIngredients(recipe);
+            Transform recipeTransform = Instantiate(recipeTemplate, container);
+            recipeTransform.gameObject.SetActive(true);
+            recipeTransform.GetComponent<RecipeUI>().SetRecipeIngredients(recipe);
         }
     }
 
