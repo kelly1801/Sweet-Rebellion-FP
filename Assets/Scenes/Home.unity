@@ -1350,8 +1350,8 @@ GameObject:
   - component: {fileID: 465637977}
   - component: {fileID: 465637976}
   - component: {fileID: 465637975}
-  - component: {fileID: 465637974}
   - component: {fileID: 465637978}
+  - component: {fileID: 465637974}
   m_Layer: 5
   m_Name: Quit Button
   m_TagString: Untagged
@@ -1412,8 +1412,8 @@ MonoBehaviour:
   m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_HighlightedColor: {r: 1, g: 0.76100624, b: 0.76100624, a: 1}
+    m_PressedColor: {r: 1, g: 0.76100624, b: 0.76100624, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
     m_ColorMultiplier: 1
@@ -1430,7 +1430,7 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 465637976}
+  m_TargetGraphic: {fileID: 4412779265558693140}
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
@@ -6016,6 +6016,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 3774530985660382920}
   m_SourcePrefab: {fileID: 100100000, guid: 5f6d738dc4fb26346ae642230e9b7611, type: 3}
+--- !u!114 &4412779265558693140 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8539906433369969083, guid: 5f6d738dc4fb26346ae642230e9b7611,
+    type: 3}
+  m_PrefabInstance: {fileID: 4412779265558693139}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1330449748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

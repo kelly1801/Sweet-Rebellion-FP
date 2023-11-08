@@ -1510,7 +1510,6 @@ GameObject:
   - component: {fileID: 3890554834010134662}
   - component: {fileID: 1157753500312352847}
   - component: {fileID: 4608538790421121090}
-  - component: {fileID: 4023614199262723729}
   m_Layer: 0
   m_Name: ChocolateMachine
   m_TagString: Untagged
@@ -1584,20 +1583,6 @@ MonoBehaviour:
   candiesQuantity: 12
   fakeCandy: {fileID: 6650585499595217505, guid: a3aad3206dade4b479a8f3bc62ff133a,
     type: 3}
---- !u!114 &4023614199262723729
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6723620448690051562}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 29fa613f65168b64e8b4b6eb3ad85b16, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  visualObject: {fileID: 0}
-  interactableObject: {fileID: 7033295875460989376}
 --- !u!1 &6768878183340132559
 GameObject:
   m_ObjectHideFlags: 0
