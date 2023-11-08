@@ -255,6 +255,7 @@ GameObject:
   - component: {fileID: 270369362668518986}
   - component: {fileID: 5441450346026614976}
   - component: {fileID: 340993905293028091}
+  - component: {fileID: 8420376037439436177}
   - component: {fileID: 6242172702173479405}
   - component: {fileID: 2021224497941924705}
   m_Layer: 6
@@ -431,6 +432,24 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 8f83ecf70cec62d4e958edb8691f84c9, type: 3}
   - {fileID: 8300000, guid: 5388293fbd836d24ba456a597fcc23c1, type: 3}
   - {fileID: 8300000, guid: 504b2cc2666772744b8833769d4c3e26, type: 3}
+--- !u!114 &8420376037439436177
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3501645825278088914}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4babe46819a12504cae5df02d1490f7a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audio: {fileID: 5441450346026614976}
+  clips:
+  - {fileID: 8300000, guid: a4852ce79368a2b49ae70c3c4c029419, type: 3}
+  - {fileID: 8300000, guid: d8ba8524a22298445be2fbce8ec81e02, type: 3}
+  - {fileID: 8300000, guid: d585b5e1babce074a81eb2cca06f32df, type: 3}
+  - {fileID: 8300000, guid: e095a7a5d9e84a94abd7960d8d47e324, type: 3}
 --- !u!114 &6242172702173479405
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -444,7 +463,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tablePickPoint: {fileID: 0}
-  randomAudioPlayer: {fileID: 340993905293028091}
+  piggyCashSounds: {fileID: 340993905293028091}
+  twinklesSounds: {fileID: 8420376037439436177}
 --- !u!114 &2021224497941924705
 MonoBehaviour:
   m_ObjectHideFlags: 0
