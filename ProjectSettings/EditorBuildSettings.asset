@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/SinglePlayer.unity
     guid: 12e0243d234e65342ba7b66aa67567c2
   - enabled: 1
-    path: Assets/Scenes/Multiplayer.unity
+    path: Assets/Scenes/MultiPlayer.unity
     guid: f066b8c932922754586ef8d382c561bc
   - enabled: 1
     path: Assets/Scenes/GameOver.unity

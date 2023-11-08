@@ -40,6 +40,12 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2545e82b06d97604caa97e88bdc3755c, type: 2}
     - target: {fileID: 3426726457464349617, guid: 7dafa6905d193ba47a47dd6349187606,
         type: 3}
+      propertyPath: fakeCandy
+      value: 
+      objectReference: {fileID: 4027450069665699181, guid: c327ed7e33bc1004f8061fc109489da5,
+        type: 3}
+    - target: {fileID: 3426726457464349617, guid: 7dafa6905d193ba47a47dd6349187606,
+        type: 3}
       propertyPath: candiesQuantity
       value: 4
       objectReference: {fileID: 0}
