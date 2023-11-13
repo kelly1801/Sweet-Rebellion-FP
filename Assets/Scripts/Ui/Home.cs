@@ -5,7 +5,7 @@ using UnityEngine;
 public class Home : MonoBehaviour
 {
     [SerializeField] private Animator crossfadeAnimator;
-    [SerializeField] private float transitionTime = 1.0f;
+    [SerializeField] private AnimationClip crossfadeAppearsClip;
 
     private static Home instance;
 
@@ -24,7 +24,7 @@ public class Home : MonoBehaviour
     private IEnumerator ActivateCoroutine(GameObject currentPanel, GameObject nextPanel)
     {
         crossfadeAnimator.SetTrigger("exit");
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(crossfadeAppearsClip.length);
         nextPanel.SetActive(true);
         currentPanel.SetActive(false);
         crossfadeAnimator.SetTrigger("open");

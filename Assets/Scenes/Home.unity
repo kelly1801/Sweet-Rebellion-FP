@@ -326,8 +326,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 250278417}
   m_HandleRect: {fileID: 250278416}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.22229436
+  m_Value: 0.00000017584617
+  m_Size: 0.1438811
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -382,9 +382,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1f1b24cfdd8762d4f8dfb937bf631cfc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  initialValue: 1.25
+  initialValue: 1.2
   reloadValue: 1.25
-  speed: 0.0025
+  speed: 0.00125
 --- !u!1 &60177735
 GameObject:
   m_ObjectHideFlags: 0
@@ -800,8 +800,8 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 1421212607}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.77770567}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMin: {x: 0, y: 0.00000015054523}
+  m_AnchorMax: {x: 1, y: 0.14388122}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1287,8 +1287,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 465637973}
   - {fileID: 573575754}
+  - {fileID: 465637973}
   - {fileID: 1970761889}
   - {fileID: 3774530985660382919}
   - {fileID: 529205272}
@@ -1367,7 +1367,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 465637972}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 13.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1375,7 +1375,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -50, y: -50}
+  m_AnchoredPosition: {x: -25, y: -25}
   m_SizeDelta: {x: 50, y: 50}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &465637974
@@ -2282,8 +2282,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.000061035156}
-  m_SizeDelta: {x: 0, y: 1574.489}
+  m_AnchoredPosition: {x: 0, y: 2082.5635}
+  m_SizeDelta: {x: 0, y: 2432.564}
   m_Pivot: {x: 0, y: 1}
 --- !u!1001 &698222890
 PrefabInstance:
@@ -2644,7 +2644,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   crossfadeAnimator: {fileID: 797083926}
-  transitionTime: 1
+  crossfadeAppearsClip: {fileID: 7400000, guid: f2ce34b1a96db5b4eaac01161024062f,
+    type: 2}
 --- !u!1 &797083925
 GameObject:
   m_ObjectHideFlags: 0
@@ -2658,7 +2659,7 @@ GameObject:
   - component: {fileID: 797083927}
   - component: {fileID: 797083926}
   m_Layer: 5
-  m_Name: Crossfade Home
+  m_Name: Home Crossfade
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2674,7 +2675,7 @@ Animator:
   m_GameObject: {fileID: 797083925}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 4f486742da161834d99f5dad79454139, type: 2}
+  m_Controller: {fileID: 9100000, guid: 54ce8cdc20ad83f4097c5535d3285a4d, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -3365,50 +3366,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 936301364}
   m_CullTransparentMesh: 1
---- !u!1 &967251790
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 967251792}
-  - component: {fileID: 967251791}
-  m_Layer: 0
-  m_Name: Reset
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &967251791
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967251790}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c0cce551220666945ac93791fbf7047b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!4 &967251792
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 967251790}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 39.713287, y: 98.39949, z: 28.879908}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &971535414
 GameObject:
   m_ObjectHideFlags: 0
@@ -5724,7 +5681,7 @@ GameObject:
   - component: {fileID: 2129358045}
   - component: {fileID: 2129358044}
   m_Layer: 5
-  m_Name: Title
+  m_Name: Text
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5771,11 +5728,19 @@ MonoBehaviour:
       m_Calls: []
   m_text: "<size=150%>Credits</size>\r\n\r\n<size=125%>Crontibutors</size>\r\nAndrea
     Arias, Andre-CAT\r\nIsabel Mej\xEDa, Flora-ars\r\nKelly Chara\r\n\r\n<size=125%>Assets</size>\r\nKitchen
-    assets | Flora-ars\r\n\r\n<size=125%>Music</size>\r\nBubble Sound | Pixabay\r\nGrrrr
-    | Pixabay\r\nLever | Krokulator\r\nQuack | Pixabay\r\n\r\n<size=125%>Sounds</size>\r\nThe
-    Excursion | Johan Glossner \r\nBabushka Song | Sight Of Wonders\r\nBring The
-    Chef | Stationary Sign\r\nChef Extraordinaire | Trabant 33\r\nThe Budapest Project
-    | Joe E. Lee\r\n\r\n<size=125%>Fonts</size>\r\nTilt Neon | Andy Clymer\r\n"
+    assets | Flora-ars\r\n\r\n<size=125%>Sounds</size>\r\nBubble Sound | Pixabay\r\nGrrrr
+    | Pixabay\r\nLever | Krokulator\r\nQuack | Pixabay\r\n\r\n<size=125%>Music</size>\r\nA
+    Fly In The Soup | The Fly Guy Five\r\nBabushka Song | Sight Of Wonders\r\nBring
+    The Chef | Stationary Sign\r\nChef Extraordinaire | Trabant 33\r\nThe Budapest
+    Project | Joe E. Lee\r\nThe Merrier Chef | Stationary Sign\r\nThe Excursion |
+    Johan Glossner \r\n\r\n<size=150%>Images</size>\r\nCoin | rawpixel.com\n<size=80%>\"Free
+    vector illustration of financial concept\"\r</size>\n\nDollar | rawpixel.com\n<size=80%>\"Free
+    Photo Paper Craft Art of a Dollar Bill\"\r</size>\n\nPiggy Coins | Freepik\n<size=80%>\"Indian
+    Rupee Coins Falling Background\"\r</size>\n\nPiggy | rawpixel.com\n<size=80%>\"Piggy
+    Bank\"\r</size>\n\nPencil stokes | vector_corp\n<size=80%>\"Pencil sketch stroke
+    texture in purple background\"\r</size>\n\r\n<size=125%>Fonts</size>\r\nTilt
+    Neon | Andy Clymer\r\nPlaypen Sans | TypeTogether, Veronika Burian, Laura Meseguer,
+    Jos\xE9 Scaglione"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 4839cc6603930fd41a2a6a9e330a1203, type: 2}
   m_sharedMaterial: {fileID: -3482964374123307079, guid: 4839cc6603930fd41a2a6a9e330a1203,
@@ -5803,8 +5768,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 36
-  m_fontSizeBase: 36
+  m_fontSize: 35
+  m_fontSizeBase: 35
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -6181,4 +6146,3 @@ SceneRoots:
   - {fileID: 776106627}
   - {fileID: 1196479222}
   - {fileID: 2009920248}
-  - {fileID: 967251792}

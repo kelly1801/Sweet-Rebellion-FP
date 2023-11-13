@@ -6,6 +6,7 @@ public class UIManager : MonoBehaviour
     [Header("INI")]
     [SerializeField] private AnimationClip readyClip;
     [SerializeField] private GameObject readyPanel;
+    [SerializeField] private GameObject pausePanel;
     [SerializeField] private GameObject controlsPanel;
 
     [Header("MID")]
@@ -36,13 +37,6 @@ public class UIManager : MonoBehaviour
 
     }
 
-    private IEnumerator DeactivateControls()
-    {
-        controlsPanel.SetActive(true);
-        yield return new WaitForSeconds(5f);
-        Destroy(controlsPanel);
-    }
-
     private IEnumerator ActivateReadyPanel()
     {
         gameManager.enabled = false;
@@ -69,7 +63,16 @@ public class UIManager : MonoBehaviour
 
         gameManager.enabled = true;
 
-        DeactivateControls();
+        pausePanel.SetActive(true);
+
+        StartCoroutine(DeactivateControls());
+    }
+
+    private IEnumerator DeactivateControls()
+    {
+        controlsPanel.SetActive(true);
+        yield return new WaitForSeconds(5f);
+        Destroy(controlsPanel);
     }
 
     private IEnumerator ActivateHurryUpPanel()
