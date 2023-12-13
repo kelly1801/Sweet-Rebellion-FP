@@ -21,7 +21,7 @@ public class MusicAudio : Audio
     #region protectedmethods
     protected override void SetVolume()
     {
-        this.audioSource.volume = Volume * this.multiplier;
+        audioSource.volume = Volume * this.multiplier;
     }
     #endregion
 

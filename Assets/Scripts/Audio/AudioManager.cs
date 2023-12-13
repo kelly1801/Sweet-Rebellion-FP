@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public static class AudioManager
 {
     public enum AudioType
@@ -28,6 +26,7 @@ public static class AudioManager
                 break;
             case AudioType.Sound:
                 SoundAudio.Volume = volume;
+                PauseAudio.Volume = volume;
                 break;
             case AudioType.Null:
                 break;

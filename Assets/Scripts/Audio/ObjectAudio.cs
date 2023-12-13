@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
-public class SoundAudio : Audio
+public class ObjectAudio : Audio
 {
     private static readonly UnityEvent volumeChanged = new();
 
@@ -21,7 +21,7 @@ public class SoundAudio : Audio
     #region protectedmethods
     protected override void SetVolume()
     {
-        audioSource.volume = Volume * this.multiplier;
+        audioSource.volume = Volume * multiplier;
     }
     #endregion
 
@@ -32,7 +32,7 @@ public class SoundAudio : Audio
 
         audioSource.loop = false;
         audioSource.playOnAwake = false;
-        audioSource.spatialBlend = 0f;
+        audioSource.spatialBlend = 0.5f;
 
         volumeChanged.AddListener(SetVolume);
 

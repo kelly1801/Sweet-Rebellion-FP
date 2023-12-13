@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Events;
 
 [RequireComponent(typeof(AudioSource))]
-public class SoundAudio : Audio
+public class PauseAudio : Audio
 {
     private static readonly UnityEvent volumeChanged = new();
 
@@ -28,7 +28,7 @@ public class SoundAudio : Audio
     #region privatemethods
     private new void Awake()
     {
-        base.Awake();
+        audioSource = gameObject.GetComponent<AudioSource>();
 
         audioSource.loop = false;
         audioSource.playOnAwake = false;
@@ -38,5 +38,6 @@ public class SoundAudio : Audio
 
         SetVolume();
     }
+
     #endregion
 }
