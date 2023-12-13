@@ -21,7 +21,7 @@ public class LevelUIManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = FindObjectOfType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
 
         StartCoroutine(ActivateReadyPanel());
 
@@ -43,7 +43,7 @@ public class LevelUIManager : MonoBehaviour
 
         readyPanel.SetActive(true);
 
-        PlayerController playerController = FindObjectOfType<PlayerController>();
+        PlayerController playerController = FindAnyObjectByType<PlayerController>();
         playerController.enabled = false;
 
         float musicVolume = MusicAudio.Volume;
