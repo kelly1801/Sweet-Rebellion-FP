@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour, IKitchenElementParent
 
 {
-    public static PlayerController Instance { get; private set; }
     public event EventHandler<OnSelectedElementChangedEventArgs> OnSelectedElementChanged;
     public class OnSelectedElementChangedEventArgs : EventArgs
     {
@@ -20,7 +19,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
     [SerializeField] private float rotateSpeed = 5.0f;
     [SerializeField] private LayerMask interactablesLayerMask;
     [SerializeField] GameInput gameInput;
-    [SerializeField] public Transform pickPoint;
+    [SerializeField] private Transform pickPoint;
 
     public Transform PickPoint
     {
@@ -40,11 +39,6 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
 
     private void Awake()
     {
-        if (Instance != null)
-        {
-            Debug.LogError("There is more than one Player instance");
-        }
-        Instance = this;
         playerRadius = GetComponent<CapsuleCollider>().radius;
         playerHeight = GetComponent<CapsuleCollider>().height;
     }
@@ -79,7 +73,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
 
     private void HandleInteractions()
     {
-        Vector2 inputVector = gameInput.GetMovementVector();
+        //Vector2 inputVector = gameInput.GetMovementVector();
         //Vector3 moveDirection = new Vector3(inputVector.x, 0.0f, inputVector.y).normalized;
 
         /*
@@ -111,6 +105,7 @@ public class PlayerController : MonoBehaviour, IKitchenElementParent
         Vector3 moveDirection = new(inputVector.x, 0.0f, inputVector.y);
         float moveDistance = moveSpeed * Time.deltaTime;
         bool canMove = CollisionDetection(moveDirection, moveDistance);
+
 
         if (inputVector != Vector2.zero)
         {
