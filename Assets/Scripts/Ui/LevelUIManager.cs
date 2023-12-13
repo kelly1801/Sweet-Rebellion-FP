@@ -1,7 +1,7 @@
 using System.Collections;
 using UnityEngine;
 
-public class UIManager : MonoBehaviour
+public class LevelUIManager : MonoBehaviour
 {
     [Header("INI")]
     [SerializeField] private AnimationClip readyClip;
@@ -21,7 +21,7 @@ public class UIManager : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+        gameManager = FindObjectOfType<GameManager>();
 
         StartCoroutine(ActivateReadyPanel());
 
@@ -43,21 +43,21 @@ public class UIManager : MonoBehaviour
 
         readyPanel.SetActive(true);
 
-        PlayerController playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>();
+        PlayerController playerController = FindObjectOfType<PlayerController>();
         playerController.enabled = false;
 
         float musicVolume = MusicAudio.Volume;
         float soundVolume = SoundAudio.Volume;
 
-        MusicAudio.Volume /= 1.5f;
-        SoundAudio.Volume /= 1.5f;
+        MusicAudio.Volume *= 0.5f;
+        SoundAudio.Volume *= 0.5f;
 
         yield return new WaitForSeconds(readyClip.length);
 
         MusicAudio.Volume = musicVolume;
         SoundAudio.Volume = soundVolume;
 
-        PlayerController.Instance.enabled = true;
+        playerController.enabled = true;
 
         Destroy(readyPanel);
 
@@ -71,7 +71,7 @@ public class UIManager : MonoBehaviour
     private IEnumerator DeactivateControls()
     {
         controlsPanel.SetActive(true);
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(10f);
         Destroy(controlsPanel);
     }
 
@@ -84,11 +84,13 @@ public class UIManager : MonoBehaviour
 
     private void ActivateVictoryPanel()
     {
+        Destroy(pausePanel);
         victoryPanel.SetActive(true);
     }
 
     private void ActivateGameOverPanel()
     {
+        Destroy(pausePanel);
         gameOverPanel.SetActive(true);
     }
 
