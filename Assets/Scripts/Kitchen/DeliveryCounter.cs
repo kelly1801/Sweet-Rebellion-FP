@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomAudioPlayer))]
@@ -9,28 +8,30 @@ public class DeliveryCounter : InteractableObject
    [SerializeField] private RandomAudioPlayer twinklesSounds;
    [SerializeField] private ParticleSystem coins;
 
+   private DeliveryManager deliveryManager;
+
+   private void Start(){
+      deliveryManager = FindAnyObjectByType<DeliveryManager>();
+   }
+
    public override void Interact(PlayerController player)
    {
       if (player.HasKitchenObject())
       {
          if (player.GetKitchenObject().TryGetBox(out BoxObject box))
          {
-            DeliveryManager.Instance.DeliverRecipe(box);
+            bool deliveredRecipe = deliveryManager.DeliverRecipe(box);
             player.GetKitchenObject().gameObject.SetActive(false);
             player.ClearKitchenObject();
 
-            piggyCashSounds.PlayRandomSound();
-            twinklesSounds.PlayRandomSound();
-
-            if (coins != null)
+            if (deliveredRecipe)
             {
+               piggyCashSounds.PlayRandomSound();
+               twinklesSounds.PlayRandomSound();
+
                coins.gameObject.SetActive(true);
                coins.Play();
                StartCoroutine(StopParticlesAfter(1f));
-            }
-            else
-            {
-               Debug.Log($"{gameObject.name}: Particle system is null");
             }
          }
       }

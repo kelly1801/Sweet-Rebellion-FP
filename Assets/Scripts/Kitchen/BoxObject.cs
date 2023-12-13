@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Linq.Expressions;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomAudioPlayer))]
@@ -30,7 +29,7 @@ public class BoxObject : KitchenObject
             // the ingredient is not valid
             return false;
         }
-        if (ingredientsList.Contains((ingredient)))
+        if (ingredientsList.Contains(ingredient))
         {
             return false;
         }
