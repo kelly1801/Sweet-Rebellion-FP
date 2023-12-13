@@ -4,9 +4,13 @@ public class SelectedInteractable : MonoBehaviour
 {
     [SerializeField] private GameObject visualObject;
     [SerializeField] private InteractableObject interactableObject;
+
+    private PlayerController playerController;
+
     private void Start()
     { 
-        PlayerController.Instance.OnSelectedElementChanged += Player_OnSelectedElementChanged;
+        playerController = FindAnyObjectByType<PlayerController>();
+        playerController.OnSelectedElementChanged += Player_OnSelectedElementChanged;
     }
 
     private void Player_OnSelectedElementChanged(object sender, PlayerController.OnSelectedElementChangedEventArgs e)

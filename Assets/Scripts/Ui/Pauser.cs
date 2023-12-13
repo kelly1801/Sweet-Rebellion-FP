@@ -1,4 +1,3 @@
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -12,11 +11,16 @@ public class Pauser : MonoBehaviour
 
     #region privatefields
     private PlayerController playerController;
+    private bool isPausing;
     #endregion
 
     #region publicmethods
     public void Pause()
     {
+        isPausing = true;
+
+        Audio.Play(audio, clip, 1.5f);
+
         if (GameManager.Pause)
         {
             Continue();
@@ -25,12 +29,16 @@ public class Pauser : MonoBehaviour
         {
             Stop();
         }
+
+        isPausing = false;
     }
     #endregion
 
     #region privatemethods
     private void Start()
     {
+        isPausing = false;
+
         pausePanel.gameObject.SetActive(false);
 
         GameObject player = GameObject.FindGameObjectWithTag("Player");
@@ -43,20 +51,10 @@ public class Pauser : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
+        if (Input.GetKeyDown(KeyCode.Escape) && !isPausing)
         {
-            StartCoroutine(PlayAsynchronically());
+            Pause();
         }
-    }
-
-    private IEnumerator PlayAsynchronically()
-    {
-        if (audio != null)
-        {
-            Audio.Play(audio, clip, 1.5f);
-        }
-        yield return null;
-        Pause();
     }
 
     private void Continue()
@@ -78,5 +76,6 @@ public class Pauser : MonoBehaviour
         GameManager.Pause = true;
         pausePanel.gameObject.SetActive(true);
     }
+
     #endregion
 }

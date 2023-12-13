@@ -1,8 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,8 +8,8 @@ public class GameManager : MonoBehaviour
     public event EventHandler VictoryEvent;
     public event EventHandler GameOverEvent;
 
-    [SerializeField, Min(0)] private float timerDurationInMinutes = 5f;
-    [SerializeField] private int debtGoal;
+    [SerializeField, Min(0), Tooltip("Minutes")] private float gameDuration = 5f;
+    [SerializeField, Min(0)] private int debtGoal;
 
     public int DebtGoal
     {
@@ -23,7 +21,7 @@ public class GameManager : MonoBehaviour
 
     public float GameMinutes
     {
-        get => timerDurationInMinutes;
+        get => gameDuration;
     }
 
     private float remainingSeconds = 999999999;
@@ -50,28 +48,12 @@ public class GameManager : MonoBehaviour
     public delegate void VictoryDelegate();
     public event VictoryDelegate VictoryEventDelegate;
 
+    private PlayerController playerController;
 
-    [SerializeField] private string[] validSceneNames; // Array to store valid scene names
+    private void Start(){
+        playerController = FindAnyObjectByType<PlayerController>();
 
-    void Start()
-    {
-        string currentSceneName = SceneManager.GetActiveScene().name;
-        if (IsValidScene(currentSceneName))
-        {
-            StartCoroutine(StartTimer(timerDurationInMinutes));
-        }
-    }
-
-    private bool IsValidScene(string sceneName)
-    {
-        foreach (string validSceneName in validSceneNames)
-        {
-            if (sceneName.Equals(validSceneName))
-            {
-                return true;
-            }
-        }
-        return false;
+        StartCoroutine(StartTimer(gameDuration));
     }
 
     private void Update()
@@ -94,7 +76,7 @@ public class GameManager : MonoBehaviour
         */
     }
 
-    IEnumerator StartTimer(float durationInMinutes)
+    private IEnumerator StartTimer(float durationInMinutes)
     {
         hurryUp = false;
 
@@ -143,7 +125,7 @@ public class GameManager : MonoBehaviour
     private void OnVictory()
     {
         gameOver = false;
-        PlayerController.Instance.enabled = false;
+        playerController.enabled = false;
         VictoryEventDelegate();
         VictoryEvent?.Invoke(this, EventArgs.Empty);
     }
@@ -151,7 +133,7 @@ public class GameManager : MonoBehaviour
     public void OnGameOver()
     {
         gameOver = true;
-        PlayerController.Instance.enabled = false;
+        playerController.enabled = false;
         GameOverEventDelegate();
         GameOverEvent?.Invoke(this, EventArgs.Empty);
     }

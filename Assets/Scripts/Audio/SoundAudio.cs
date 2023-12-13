@@ -21,7 +21,7 @@ public class SoundAudio : Audio
     #region protectedmethods
     protected override void SetVolume()
     {
-        this.audioSource.volume = Volume * this.multiplier;
+        audioSource.volume = Volume * this.multiplier;
     }
     #endregion
 
@@ -32,7 +32,7 @@ public class SoundAudio : Audio
 
         audioSource.loop = false;
         audioSource.playOnAwake = false;
-        audioSource.spatialBlend = 0.5f;
+        audioSource.spatialBlend = 0f;
 
         volumeChanged.AddListener(SetVolume);
 

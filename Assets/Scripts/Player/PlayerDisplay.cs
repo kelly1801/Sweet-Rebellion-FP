@@ -11,8 +11,8 @@ public class PlayerDisplay : MonoBehaviour
     {
         if (player != null)
         {
-            this.image.sprite = player.sprite;
-            this.nameField.text = player.name;
+            image.sprite = player.sprite;
+            nameField.text = player.name;
         }
     }
 }

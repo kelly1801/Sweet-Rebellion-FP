@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [ExecuteInEditMode]
@@ -8,7 +6,7 @@ public class Finder : MonoBehaviour
     #region privatemethods
     private void FindWithNoneMaterials()
     {
-        GameObject[] allObjects = UnityEngine.Object.FindObjectsOfType<GameObject>();
+        GameObject[] allObjects = FindObjectsOfType<GameObject>();
     
         foreach (GameObject child in allObjects)
         {

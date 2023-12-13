@@ -14,6 +14,7 @@ public class ClearTable : InteractableObject
             if (player.HasKitchenObject()) {
                 // Player is carrying something
                 player.GetKitchenObject().SetKitchenObjectParent(this);
+                
                 randomAudioPlayer.PlayRandomSound();
             } 
         } else {

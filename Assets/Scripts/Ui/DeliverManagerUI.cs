@@ -1,9 +1,5 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 public class DeliverManagerUI : MonoBehaviour
 {
     [SerializeField] private Transform container;
@@ -11,6 +7,7 @@ public class DeliverManagerUI : MonoBehaviour
     [SerializeField] private RandomAudioPlayer randomAudioPlayer;
 
     private GameManager gameManager;
+    private DeliveryManager deliveryManager;
 
     private void Awake()
     {
@@ -19,10 +16,11 @@ public class DeliverManagerUI : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
+        deliveryManager = FindAnyObjectByType<DeliveryManager>();
 
-        DeliveryManager.Instance.OnRecipeSpawned += DeliveryManager_OnRecipeSpawned;
-        DeliveryManager.Instance.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
+        deliveryManager.OnRecipeSpawned += DeliveryManager_OnRecipeSpawned;
+        deliveryManager.OnRecipeCompleted += DeliveryManager_OnRecipeCompleted;
 
         UpdateVisual();
     }
@@ -51,10 +49,9 @@ public class DeliverManagerUI : MonoBehaviour
             if (template == recipeTemplate) continue;
 
             template.gameObject.SetActive(false);
-
         }
 
-        foreach (RecipeSO recipe in DeliveryManager.Instance.GetWaitingRecipes())
+        foreach (RecipeSO recipe in deliveryManager.GetWaitingRecipes())
         {
             Transform recipeTransform = Instantiate(recipeTemplate, container);
             recipeTransform.gameObject.SetActive(true);

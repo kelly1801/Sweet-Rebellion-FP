@@ -1,4 +1,3 @@
-using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -20,7 +19,7 @@ public class MoneyFiller : ImageFiller
 
     protected new void Start()
     {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
 
         base.Start();
 

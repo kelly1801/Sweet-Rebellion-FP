@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 public class AudioObserver : MonoBehaviour
@@ -14,7 +13,7 @@ public class AudioObserver : MonoBehaviour
 
     private void Start()
     {
-        gameManager = GameObject.FindAnyObjectByType<GameManager>();
+        gameManager = FindAnyObjectByType<GameManager>();
 
         gameManager.HurryUpEventDelegate += RunHurryUpSettings;
         gameManager.GameOverEventDelegate += RunGameOverMusic;

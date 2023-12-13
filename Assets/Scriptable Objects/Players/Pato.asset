@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56ac152c1413b134cb86087511f2e736, type: 3}
   m_Name: Pato
   m_EditorClassIdentifier: 
-  prefab: {fileID: 4189245835474690939, guid: 3c6eb72c0e00e124e951357057deb652, type: 3}
+  prefab: {fileID: 1656896280905860166, guid: 6d301f9bd72c16f49950d4f42d90eda3, type: 3}
   sprite: {fileID: 21300000, guid: e8eb537ba9c053149bd401890689a077, type: 3}
   name: Pato

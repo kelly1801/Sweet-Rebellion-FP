@@ -12,11 +12,11 @@ public class QuitButton : MonoBehaviour
     private void Start()
     {
         #if UNITY_STANDALONE || UNITY_EDITOR
-        gameObject.SetActive(true);
-        _button = gameObject.GetComponent<Button>();
-        _button.onClick.AddListener(QuitGame);
+            gameObject.SetActive(true);
+            _button = gameObject.GetComponent<Button>();
+            _button.onClick.AddListener(QuitGame);
         #else
-        gameObject.SetActive(false);
+            gameObject.SetActive(false);
         #endif
     }
 

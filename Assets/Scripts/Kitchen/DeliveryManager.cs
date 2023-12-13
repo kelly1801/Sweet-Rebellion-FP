@@ -12,13 +12,9 @@ public class RecipeCompletedEventArgs : EventArgs
 }
 public class DeliveryManager : MonoBehaviour
 {
-
-  
   public event EventHandler OnRecipeSpawned;
   public event EventHandler<RecipeCompletedEventArgs> OnRecipeCompleted;
 
-  public static DeliveryManager Instance { get; private set; }
-  
   [SerializeField] private RecipesListSO _recipesListSO;
   private List<RecipeSO> waitingRecipeList;
 
@@ -29,7 +25,6 @@ public class DeliveryManager : MonoBehaviour
 
   private void Awake()
   {
-    Instance = this;
     waitingRecipeList = new List<RecipeSO>();
   }
 
@@ -52,7 +47,7 @@ public class DeliveryManager : MonoBehaviour
     
   }
 
-  public void DeliverRecipe(BoxObject box)
+  public bool DeliverRecipe(BoxObject box)
   {
     for (int i = 0; i < waitingRecipeList.Count; i++)
     {
@@ -87,13 +82,14 @@ public class DeliveryManager : MonoBehaviour
         {
           waitingRecipeList.RemoveAt(i);
           OnRecipeCompleted?.Invoke(this, new RecipeCompletedEventArgs(waitingRecipe.recipeValue));
-          return;
+          return true;
         }
       }
     }
     
     // player did not deliver a valid recipe
     Debug.Log("not valid recipe asshole");
+    return false;
   }
 
   public List<RecipeSO> GetWaitingRecipes()
