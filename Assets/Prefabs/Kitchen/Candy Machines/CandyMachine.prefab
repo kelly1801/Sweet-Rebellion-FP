@@ -476,7 +476,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6763137742812317079}
   - component: {fileID: 7605329290563847071}
-  - component: {fileID: 7916307689788280567}
+  - component: {fileID: 2374162190565824389}
   m_Layer: 0
   m_Name: Lever
   m_TagString: Untagged
@@ -602,7 +602,7 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7916307689788280567
+--- !u!114 &2374162190565824389
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -611,7 +611,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2315372643523245928}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 84af4256aa601b64f8498ca960fa646a, type: 3}
+  m_Script: {fileID: 11500000, guid: c8b0f430ded1e1f4097d63f6ffaa1c01, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   multiplier: 1
@@ -1293,7 +1293,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a9a6b130eae282249929bd27ac47ac54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  audio: {fileID: 7916307689788280567}
+  audio: {fileID: 2374162190565824389}
 --- !u!114 &3426726457464349617
 MonoBehaviour:
   m_ObjectHideFlags: 0

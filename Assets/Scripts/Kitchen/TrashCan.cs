@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(RandomAudioPlayer))]
@@ -14,10 +13,11 @@ public class TrashCan : InteractableObject
 
         if (player.HasKitchenObject())
         {
-            randomAudioPlayer.PlayRandomSound();
             KitchenObject ingredient = player.GetKitchenObject();
             ingredient.SetKitchenObjectParent(this);
             ingredient.gameObject.SetActive(false);
+            
+            randomAudioPlayer.PlayRandomSound();
 
             dust.gameObject.SetActive(true);
             dust.Play();
